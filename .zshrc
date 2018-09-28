@@ -141,3 +141,6 @@ source $ZSH/oh-my-zsh.sh
  alias deact='deactivate'
  alias act27='source vpy27/bin/activate'
  alias act36='source vpy36/bin/activate'
+
+# System command aliases
+ alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT1|grep -E "state|to\ full|percentage"'
