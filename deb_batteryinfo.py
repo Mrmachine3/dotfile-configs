@@ -12,12 +12,13 @@
 
 from tempfile import NamedTemporaryFile
 from decimal import Decimal
+from subprocess import call
 import subprocess
 import plistlib
 import math
 import sys
 
-p = subprocess.Popen(["upower -i /org/freedesktop/UPower/devices/battery_BAT1"], stdout=subprocess.PIPE)
+p = subprocess.call("upower" "-i" "/org/freedesktop/UPower/devices/battery_BAT1") #Debug this section of code to run the command when calling this
 output = p.communicate()[0]
 
 o_max = [l for l in output.splitlines() if 'energy-full' in l][0]
