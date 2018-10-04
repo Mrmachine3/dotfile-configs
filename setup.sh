@@ -24,11 +24,8 @@ sudo chsh -s "$(command -v zsh)" "${USER}"
 cd
 
 # git clone oh-my-zsh repository from github
-git clone https://github.com/robbyrussell/oh-my-zsh.git
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# change working directory to oh-my-zsh directory
-cd oh-my-zsh/
-
-# run oh-my-zsh.sh file
-sudo ./oh-my-zsh.sh
-
+#TO DO LIST
+# MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
+# SAVE COPY OF CURRENT SHELL CONFIGURATION FILE AND MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
