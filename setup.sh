@@ -1,11 +1,15 @@
 #!/bin/bash
 
 #---Author: Anthony Rodriguez
-#---Created Date: 10/03/2018
+#---Created Date: 10/04/2018
 #---Project Tag: linux, utility, bash
 #---Purpose:
 #   The purpose of this script is to setup the current machine
-#   with preferences.
+#   with preferences, including the following:
+#    - Adding mrmachine user to sudoer file
+#    - package management maintenance
+#    - change default shell to zsh
+#    - implement oh-my-zsh shell custom preferences
 #--->
 
 # Defining variables
@@ -19,10 +23,11 @@ passwd $PASSWD
 su root; echo "$ROOTPASSWD" && sudo echo "${user}" ALL=(ALL)       ALL' | sudo tee -a ~/Desktop/sample_sudoer_file.txt
 
 # Update and upgrade package lists
-apt-get update && apt-get upgrade
+apt-get update && apt-get upgrade && apt-get check && apt-get -f install
 
-# Install packages
-apt-get install curl git
+# Install packages and clean up unused packages 
+apt-get install curl git 
+apt-get autoclean && apt-get autoremove
 
 # Add zsh to /etc/shells
 command -v zsh | sudo tee -a /etc/shells
@@ -46,3 +51,5 @@ cd; source .zshrc
 #TO DO LIST
 # MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
 # MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
+# ADD WIFI REBOOTER COMMANDS
+# MOVE OR CREATE SYMLINK TO *_BATTERYINFO.PY SCRIPT
