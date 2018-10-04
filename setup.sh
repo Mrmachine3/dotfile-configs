@@ -9,14 +9,14 @@
 #--->
 
 # Defining variables
-USER=
-PASSWD=
-ROOTPASSWD
+user=$(whoami)
+PASSWD=123456
+ROOTPASSWD=987654
 
 # Adding new sudoer
 useradd $USER
 passwd $PASSWD
-su root; echo "$ROOTPASSWD" && sudo sh -c 'echo "$USER ALL=(ALL)       ALL" >>/file.txt'
+su root; echo "$ROOTPASSWD" && sudo echo "${user}" ALL=(ALL)       ALL' | sudo tee -a ~/Desktop/sample_sudoer_file.txt
 
 # Update and upgrade package lists
 apt-get update && apt-get upgrade
@@ -33,13 +33,16 @@ sudo chsh -s "$(command -v zsh)" "${USER}"
 # Change working directory to home directory and install oh-my-zsh from github
 cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# backing up copy of current .zshrc to an original
-cp ~/.zshrc ~/.zshrc.orig
+# rename existing shell dotfiles by appending .orig
+mv ~/.zshrc ~/.zshrc.orig; mv ~/.bashrc ~/.bashrc.orig
 
-# backing up copy of current .bashrc to an original
-cp ~/.bashrc ~/.bashrc.orig
+# execute git clone of mrmachine3/preferences
+git clone https://github.com/Mrmachine3/preferences.git
+cd preferences; cp ./machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc ~/.zshrc
+cd; source .zshrc
+
+
 
 #TO DO LIST
 # MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
 # MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
-# AUTOMATE NEW SUDOER ADDITION FOR MRMACHINE
