@@ -26,6 +26,12 @@ cd
 # git clone oh-my-zsh repository from github
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# backing up copy of current .zshrc to an original
+cp ~/.zshrc ~/.zshrc.orig
+
+# backing up copy of current .bashrc to an original
+cp ~/.bashrc ~/.bashrc.orig
+
 #TO DO LIST
 # MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
-# SAVE COPY OF CURRENT SHELL CONFIGURATION FILE AND MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
+# MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
