@@ -12,16 +12,21 @@
 
 from tempfile import NamedTemporaryFile
 from decimal import Decimal
-from subprocess import call
+from subprocess import Popen, PIPE
 import subprocess
 import plistlib
 import math
 import sys
 
-p = subprocess.call("upower" "-i" "/org/freedesktop/UPower/devices/battery_BAT1") #Debug this section of code to run the command when calling this
-output = p.communicate()[0]
+with Popen(["upower", "-i", "/org/freedesktop/UPower/devices/battery_BAT1"], stdout=PIPE, bufsize=1, universal_newlines=True) as p:
+    for line in p.stdout:
+        print(line, end='')
 
-o_max = [l for l in output.splitlines() if 'energy-full' in l][0]
+print(p.stdout.line[3])
+
+
+'''
+o_max = [l for l in output.splitlines() if  'energy-full' in l][0]
 o_cur = [l for l in output.splitlines() if 'energy' in l][0]
 
 b_max = float(o_max.rpartition('=')[-1].strip())
@@ -51,3 +56,4 @@ color_out = (
 
 out = color_out + out + color_reset
 sys.stdout.write(out)
+'''
