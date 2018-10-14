@@ -24,6 +24,9 @@ with Popen(["upower", "-i", "/org/freedesktop/UPower/devices/battery_BAT1"], std
 
 print(p.stdout.line[3])
 
+#divide energy_now by energy_full to get a battery percentage
+cat /sys/class/power_supply/BAT1/energy_now 
+cat /sys/class/power_supply/BAT1/energy_full 
 
 '''
 o_max = [l for l in output.splitlines() if  'energy-full' in l][0]

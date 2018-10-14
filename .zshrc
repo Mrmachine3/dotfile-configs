@@ -3,7 +3,7 @@
 export PATH=/usr/local/share/python:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mrmachin3/.oh-my-zsh"
+export ZSH="/home/mrmachine/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -97,9 +97,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # zshrc configuration aliases
- alias zshconfig='atom ~/.zshrc'
+ alias zshconfig='${=EDITOR} ~/.zshrc'
  alias zshrc='${=EDITOR} ~/.zshrc'
- alias ohmyzsh='atom ~/.oh-my-zsh'
+ alias ohmyzsh='${=EDITOR} ~/.oh-my-zsh'
  alias .zsh='source ~/.zshrc'
 
 # Filesystem aliases
@@ -141,6 +141,7 @@ source $ZSH/oh-my-zsh.sh
  alias deact='deactivate'
  alias act27='source vpy27/bin/activate'
  alias act36='source vpy36/bin/activate'
+ alias python='python3'
 
 # System command aliases
  alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT1|grep -E "state|to\ full|percentage"'
