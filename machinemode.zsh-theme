@@ -23,22 +23,12 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%} ✔✔✔ "
 # Add 3 red ✗s if the branch is diiirrrty! Dirty branch!
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%} ✗✗✗ "
 
-#Battery Charge Function
-function battery_charge(){
-    if [ -e /usr/bin/deb_batteryinfo.py ]
-    then
-        echo `python /usr/bin/deb_batteryinfo.py`
-    else
-        echo '';
-    fi
-}
-
 # More symbols to choose from:
 # ☀ ✹ ♆ ♀ ♁ ♚ ♛ ♜ ♝ ♞ ♟ ♠ ♣ ⚢ ⚲ ⚴ ⚥ ⚤ ⚦ ⚒ ⚑ ⚐ ♻ ✡ ✔ ✖ ✚ ✱ ✤ ✦ ❤ ➜ ➟ ➼ ✂ ✎ ✐
 # ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬟ ⬤ 〒 ǀ ǁ ǂ ĭ Ť Ŧ ▸ ▹ ⬢ ⬡ ⬟ ⬠ 
 
 # Displays current battery charge, custom user prompt, hostname and current working directory
-PROMPT="$(battery_charge) $MACHINEMODE_CURRENT_USER_ $MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
+PROMPT="$(battery_level_gauge) $MACHINEMODE_CURRENT_USER_ $MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
 
 # Displays the current date and time
 RPROMPT='$MACHINEMODE_TIME_'
