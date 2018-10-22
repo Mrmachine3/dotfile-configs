@@ -26,7 +26,7 @@ su root; echo "$ROOTPASSWD" && sudo echo "${user}" ALL=(ALL)       ALL' | sudo t
 apt-get update && apt-get upgrade && apt-get check && apt-get -f install
 
 # Install packages and clean up unused packages 
-apt-get install curl git 
+apt-get install curl git hub 
 apt-get autoclean && apt-get autoremove
 
 # Add zsh to /etc/shells
@@ -43,8 +43,8 @@ mv ~/.zshrc ~/.zshrc.orig; mv ~/.bashrc ~/.bashrc.orig
 
 # execute git clone of mrmachine3/preferences
 git clone https://github.com/Mrmachine3/preferences.git
-cd preferences; cp ./machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc ~/.zshrc
-cd; source .zshrc
+cd preferences; cp ./machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc_master ~/.zshrc
+cd; source ./.zshrc
 
 
 
@@ -52,4 +52,4 @@ cd; source .zshrc
 # MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
 # MOVE OR CREATE SYMLINK TO .ZSHRC FILE FROM PREFERENCES GIT REPOSITORY
 # ADD WIFI REBOOTER COMMANDS
-# MOVE OR CREATE SYMLINK TO *_BATTERYINFO.PY SCRIPT
+# 
