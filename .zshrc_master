@@ -132,3 +132,7 @@ source $ZSH/oh-my-zsh.sh
  alias deact='deactivate'
  alias act27='source vpy27/bin/activate'
  alias act36='source vpy36/bin/activate'
+
+# Web-search aliases
+ alias google='web_search google'
+ alias github='web_search github'
