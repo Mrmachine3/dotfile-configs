@@ -124,6 +124,7 @@ source $ZSH/oh-my-zsh.sh
  alias gadd='git add .'
  alias gull='git pull'
  alias gcom='git commit -m'
+ alias gush='git push'
 
 # Python venv aliases
  alias pyfind='find . -name "*.py"'
