@@ -12,7 +12,7 @@
  MACHINEMODE_LOCA_="%{$fg_bold[cyan]%} %~ \$(git_prompt_info)%{$reset_color%}"
 
 # Grab battery functions to display in prompt
- MACHINEMODE_BAT_="%{$fg_bold[yellow]%}$(battery_level_gauge)%{$fg_bold[yellow]%}[$(battery_pct_prompt)] "
+ MACHINEMODE_BAT_="%{$fg_bold[yellow]%}$(battery_level_gauge)%{$fg_bold[yellow]%}$(battery_pct_prompt) "
 
 # For the git prompt, use a white @ and blue text for the branch name
  ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}@%{$fg_bold[yellow]%}"
@@ -31,11 +31,7 @@
 # ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬟ ⬤ 〒 ǀ ǁ ǂ ĭ Ť Ŧ ▸ ▹ ⬢ ⬡ ⬟ ⬠ 
 
 # Displays current battery charge, custom user prompt, hostname and current working directory
-<<<<<<< HEAD
-PROMPT="$(battery_level_gauge)$(battery_pct_prompt) $MACHINEMODE_CURRENT_USER_ $MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
-=======
  PROMPT="$MACHINEMODE_BAT_$MACHINEMODE_CURRENT_USER_$MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
->>>>>>> d1d1f98147f2597687b82f7e9bae0723f14b2616
 
 # Displays the current date and time
  RPROMPT='$MACHINEMODE_TIME_'
