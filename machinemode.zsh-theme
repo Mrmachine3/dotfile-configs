@@ -28,7 +28,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%} ✗✗✗ "
 # ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬟ ⬤ 〒 ǀ ǁ ǂ ĭ Ť Ŧ ▸ ▹ ⬢ ⬡ ⬟ ⬠ 
 
 # Displays current battery charge, custom user prompt, hostname and current working directory
-PROMPT="$(battery_level_gauge) $(battery_pct_prompt) $MACHINEMODE_CURRENT_USER_ $MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
+PROMPT="$(battery_level_gauge) [$(battery_pct_prompt)] $MACHINEMODE_CURRENT_USER_ $MACHINEMODE_MACHINE_$MACHINEMODE_LOCA_"
 
 # Displays the current date and time
 RPROMPT='$MACHINEMODE_TIME_'
