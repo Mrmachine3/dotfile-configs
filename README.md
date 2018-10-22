@@ -14,12 +14,12 @@ The setup script will perform the following actions:
 4.  Cloning oh-my-zsh[1] repository
 5.  Cloning repository for Mr. Machine's Preferences[2]
     
->### Key repo files
->|File Name		|File Description								|
->|----------------------|-------------------------------------------------------------------------------|
->|.zshrc_master		|A zsh config file								|
->|machinemode.zsh-theme	|A custom zsh theme								|
->|wifi-rebooter.sh	|A custom shell script to shutdown and restart a home network wifi service	|
+#### Key repo files
+>|File Name			|File Description								|
+>|------------------------------|-------------------------------------------------------------------------------|
+>|.zshrc_master			|A zsh config file								|
+>|machinemode.zsh-theme		|A custom zsh theme								|
+>|wifi-rebooter.sh		|A custom shell script to shutdown and restart a home network wifi service	|
 
 ### To Do List
  + Develop a bash script to perform basic host security hardening routines
