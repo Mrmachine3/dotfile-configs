@@ -29,6 +29,9 @@ apt-get update && apt-get upgrade && apt-get check && apt-get -f install
 apt-get install curl git hub 
 apt-get autoclean && apt-get autoremove
 
+# Install directory sync tool called GoSync (https://github.com/hschauhan/gosync)
+pip install GoSync
+
 # Add zsh to /etc/shells
 command -v zsh | sudo tee -a /etc/shells
 
