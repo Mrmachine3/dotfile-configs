@@ -2,7 +2,7 @@
 MACHINEMODE_TIME_="%{$fg_bold[white]%}%{$fg_bold[red]%} %{$fg_bold[red]%}%W %{$reset_color%}%{$fg_bold[red]%}%t%{$reset_color%} %{$reset_color%}"
 
 # Grab current user's username
-MACHINEMODE_CURRENT_USER_="%{$fg_bold[green]%}⚒ %n @%{$reset_color%} "
+MACHINEMODE_CURRENT_USER_="%{$fg_bold[green]%}⚒ %n @%{$reset_color%}"
 
 # Grab the current machine name
 MACHINEMODE_MACHINE_="%{$fg_bold[green]%}%m ⚒%{$fg[white]%}%{$reset_color%}"
