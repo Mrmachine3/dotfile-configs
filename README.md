@@ -17,4 +17,12 @@ The setup script will perform the following actions:
     *batteryinfo.py: a custom python script to display battery life on a laptop
     wifi-rebooter.sh: a custom python script to bring down and restart the home network wifi service
 
-
+### To Do List
+ + Develop a git repo cloner that clones list of URLs recursively
+ + Develop a script to create school notes repo with the following directories:
+ 1. Research
+ 2. Images
+ 3. Articles
+ 4. Flash Cards
+ 5. Study Guides
+  
