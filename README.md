@@ -21,16 +21,16 @@ The setup script will perform the following actions:
 >|machinemode.zsh-theme		|A custom zsh theme								|
 >|wifi-rebooter.sh		|A custom shell script to shutdown and restart a home network wifi service	|
 
-### To Do List
- + Develop a bash script to perform basic host security hardening routines
- + Develop a git repo cloner that clones list of URLs recursively
- + Develop a help function to display markdown syntax cheatsheet
- + Develop a script to create school notes repo with the following directories:
- > 1. Research
- > 2. Images
- > 3. Articles
- > 4. Flash Cards
- > 5. Study Guides
+#### To Do List
+> + Develop a bash script to perform basic host security hardening routines
+> + Develop a git repo cloner that clones list of URLs recursively
+> + Develop a help function to display markdown syntax cheatsheet
+> + Develop a script to create school notes repo with the following directories:
+> > 1. Research
+> > 2. Images
+> > 3. Articles
+> > 4. Flash Cards
+> > 5. Study Guides
 
 ***  
 ### Useful Links
