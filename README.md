@@ -1,9 +1,9 @@
 # Mr. Machine's Preferences
 
 ## Purpose
-This repository is intended to store various dotfiles for my preferred terminal shell, text editor, and productivity workflow hacks. 
-This repo will also include bash shell and python scripts. 
-This repository can be cloned to any new machine where a setup script can be run to configure the preferred shell prompt, preferred text editor and any frequently used packages, applications or plugins.
+This repository is intended to store various dotfiles for my preferred terminal shell, text editor, and productivity workflow hacks.This repo 
+will also include bash shell and python scripts. This repository can be cloned to any new machine where a setup script can be run to configure 
+the preferred shell prompt, preferred text editor and any frequently used packages, applications or plugins.
 
 ## Objective
 
