@@ -11,8 +11,8 @@ The setup script will perform the following actions:
 1.  Perform basic host security hardening routines
 2.  Perform an incremental/full update of system
 3.  Install required packages and applications
-4.  Cloning oh-my-zsh[1] repository
-5.  Cloning repository for Mr. Machine's Preferences[2]
+4.  Cloning oh-my-zsh<sup>[[1]]</sup> repository
+5.  Cloning repository for Mr. Machine's Preferences<sup>[[2]]</sup>
     
 #### Key repo files
 >|File Name			|File Description								|
@@ -32,8 +32,6 @@ The setup script will perform the following actions:
 > > 4. Flash Cards
 > > 5. Study Guides
 
-***  
-### Useful Links
- + [1]: https://github.com/robbyrussell/oh-my-zsh/	"oh-my-zsh"
- + [2]: https://github.com/mrmachine3/preferences/	"Mr. Machine's Preferences"
 ***
+ [1]: https://github.com/robbyrussell/oh-my-zsh/	"oh-my-zsh"
+ [2]: https://github.com/mrmachine3/preferences/	"Mr. Machine's Preferences"
