@@ -12,7 +12,7 @@ MACHINEMODE_MACHINE_="%{$fg_bold[green]%}%m ⚒%{$fg[white]%}%{$reset_color%}"
 MACHINEMODE_LOCA_="%{$fg_bold[cyan]%} %~ \$(git_prompt_info)%{$reset_color%}"
 
 # Grab battery functions to display in prompt
-MACHINEMODE_BAT_="%{$fg_bold[yellow]%}$(battery_level_gauge) %{$fg_bold[yellow]%}[$(battery_pct_prompt)]"
+MACHINEMODE_BAT_="%{$fg_bold[yellow]%}$(battery_level_gauge) %{$fg_bold[yellow]%}[$(battery_pct_prompt)] "
 
 # For the git prompt, use a white @ and blue text for the branch name
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}@%{$fg_bold[yellow]%}"
