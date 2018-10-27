@@ -27,8 +27,8 @@
 apt-get update && apt-get upgrade && apt-get check && apt-get -f install
 
 # Install packages and clean up unused packages 
-apt-get install curl git hub 
-apt-get autoclean && apt-get autoremove
+#apt-get install curl git hub 
+#apt-get autoclean && apt-get autoremove
 
 # Add zsh to /etc/shells
 command -v zsh | sudo tee -a /etc/shells
