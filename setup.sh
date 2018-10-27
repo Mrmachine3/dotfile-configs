@@ -13,14 +13,15 @@
 #--->
 
 # Defining variables
-user=$(whoami)
-PASSWD=123456
-ROOTPASSWD=987654
+#user=$(whoami)
+#PASSWD=123456
+#ROOTPASSWD=987654
 
 # Adding new sudoer
-useradd $USER
-passwd $PASSWD
-su root; echo "$ROOTPASSWD" && sudo echo "${user}" ALL=(ALL)       ALL' | sudo tee -a ~/Desktop/sample_sudoer_file.txt
+#useradd $USER
+#passwd $PASSWD
+#su root; echo "$ROOTPASSWD" && sudo echo "${user}" ALL=(ALL)       ALL' | sudo tee -a ~/Desktop/sample_sudoer_file.txt
+
 
 # Update and upgrade package lists
 apt-get update && apt-get upgrade && apt-get check && apt-get -f install
@@ -29,27 +30,22 @@ apt-get update && apt-get upgrade && apt-get check && apt-get -f install
 apt-get install curl git hub 
 apt-get autoclean && apt-get autoremove
 
-# Install directory sync tool called GoSync (https://github.com/hschauhan/gosync)
-pip install GoSync
-
 # Add zsh to /etc/shells
 command -v zsh | sudo tee -a /etc/shells
 
 # User chsh to set the shell to zsh
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
-# Change working directory to home directory and install oh-my-zsh from github
-cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 # rename existing shell dotfiles by appending .orig
 mv ~/.zshrc ~/.zshrc.orig; mv ~/.bashrc ~/.bashrc.orig
 
+# Change working directory to home directory and install oh-my-zsh from github
+cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # execute git clone of mrmachine3/preferences
 git clone https://github.com/Mrmachine3/preferences.git
-cd preferences; cp ./machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc_master ~/.zshrc
+cd preferences; cp ./linux_machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc_master ~/.zshrc
 cd; source ./.zshrc
-
-
 
 #TO DO LIST
 # MOVE OR CREATE SYMLINK TO MACHINEMODE-THEME FILE (FROM PREFERENCES GIT REPOSITORY) INTO THE THEMES FOLDER OF OH-MY-ZSH DIRECTORY
