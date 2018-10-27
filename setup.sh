@@ -37,7 +37,7 @@ command -v zsh | sudo tee -a /etc/shells
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
 # Change working directory to home directory and install oh-my-zsh from github
-cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"; echo "exit"
 
 # execute git clone of mrmachine3/preferences
 cd; git clone https://github.com/mrmachine3/preferences.git
@@ -46,18 +46,18 @@ cd; git clone https://github.com/mrmachine3/preferences.git
 file1=".zshrc"
 if [ -e "$file1" ]
 then
-    echo "$file1 found!" mv ~/.zshrc ~/.zshrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
+    echo "$file1 found!" && mv ~/.zshrc ~/.zshrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
 else
-    echo "$file1 not found" cp ~/preferences/.zshrc_master ~/.zshrc
+    echo "$file1 not found" && cp ~/preferences/.zshrc_master ~/.zshrc
 fi
 
 # check if original .bashrc file exists and save a copy of dotfile by appending .orig to filename
 file2=".bashrc"
 if [ -e "$file2" ]
 then 
-    echo "$file2 found!" mv ~/.bashrc ~/.bashrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
+    echo "$file2 found!" && mv ~/.bashrc ~/.bashrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
 else
-    echo "$file2 not found" cp ~/preferences/.zshrc_master ~/.zshrc
+    echo "$file2 not found" && cp ~/preferences/.zshrc_master ~/.zshrc
 
 # move theme file to .oh-my-zsh themes folder
 cd ~/preferences; cp ./linux_machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme
