@@ -36,15 +36,31 @@ command -v zsh | sudo tee -a /etc/shells
 # User chsh to set the shell to zsh
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
-# rename existing shell dotfiles by appending .orig
-mv ~/.zshrc ~/.zshrc.orig; mv ~/.bashrc ~/.bashrc.orig
-
 # Change working directory to home directory and install oh-my-zsh from github
 cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # execute git clone of mrmachine3/preferences
-git clone https://github.com/Mrmachine3/preferences.git
-cd preferences; cp ./linux_machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme && cp ./.zshrc_master ~/.zshrc
+cd; git clone https://github.com/mrmachine3/preferences.git
+
+# check if original .zshrc file exists and save copy of dotfile by appending .orig to filename
+file1=".zshrc"
+if [ -e "$file1" ]
+then
+    echo "$file1 found!" mv ~/.zshrc ~/.zshrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
+else
+    echo "$file1 not found" cp ~/preferences/.zshrc_master ~/.zshrc
+fi
+
+# check if original .bashrc file exists and save a copy of dotfile by appending .orig to filename
+file2=".bashrc"
+if [ -e "$file2" ]
+then 
+    echo "$file2 found!" mv ~/.bashrc ~/.bashrc.orig && cp ~/preferences/.zshrc_master ~/.zshrc
+else
+    echo "$file2 not found" cp ~/preferences/.zshrc_master ~/.zshrc
+
+# move theme file to .oh-my-zsh themes folder
+cd ~/preferences; cp ./linux_machinemode.zsh-theme ~/oh-my-zsh/themes/machinemode.zsh-theme
 cd; source ./.zshrc
 
 #TO DO LIST
