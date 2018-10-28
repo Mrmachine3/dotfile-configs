@@ -157,3 +157,6 @@ source $ZSH/oh-my-zsh.sh
  alias tl='tmux list-sessions'
  alias tksv='tmux kill-server'
  alias tkss='tmux kill-session -t'
+
+#Functions
+

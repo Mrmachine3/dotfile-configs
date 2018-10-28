@@ -27,6 +27,8 @@ echo "DONE...Completed package manager update and upgrade process"
 # Install packages and clean up unused packages 
 apt-get install curl git hub zsh
 apt-get autoclean && apt-get autoremove
+gem install tmuxinator
+
 echo "DONE...installed specified packages"
 
 # Add zsh to /etc/shells
