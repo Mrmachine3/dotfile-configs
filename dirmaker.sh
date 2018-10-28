@@ -1,6 +1,6 @@
 #!/bin/bash
 # A bash script to  create the following directory tree:
-# /home/mrmachine/Desktop/$BASE
+# $HOME/Desktop/$BASE
 #    ├── YEAR
 #    │   ├── QTR
 #    │   │   ├─── COURSE
