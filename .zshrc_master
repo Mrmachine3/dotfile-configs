@@ -100,6 +100,9 @@ source $ZSH/oh-my-zsh.sh
  alias ohmyzsh='${=EDITOR} ~/.oh-my-zsh'
  alias .zsh='source ~/.zshrc'
 
+# Fun aliases
+ alias cowsay='/usr/games/fortune | /usr/games/cowsay -n'
+
 # Filesystem aliases
  alias all='ls -arlFh'
  alias ls.='ls -ld .*'
@@ -148,6 +151,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Directory cloning aliases
  alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
+ alias seeclone='echo "rclone sync /home/mrmachine/Desktop/dpu_masters remote:dpu_cybersec"'
 
 # OMZ plugin aliases
  alias tmux='tmux -2'

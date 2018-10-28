@@ -97,3 +97,10 @@ tree -aC $NEWTREE
 printf '\nFinished...dirmaker.sh script completed successfully!\n'
 echo "The $BASE directory tree created on" $(date +%m-%d-%Y)
 echo " "
+
+#To Do
+# check if base directory exists, if so skip
+# validate base directory name by only allowing "dpu_masters"
+# check if year director exists, if so skip
+# check if quarter director exists, if so skip
+# add about.md file to base directory to give introduction to master's program
