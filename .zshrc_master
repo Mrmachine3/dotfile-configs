@@ -158,7 +158,7 @@ source $ZSH/oh-my-zsh.sh
  alias tksv='tmux kill-server'
  alias tkss='tmux kill-session -t'
 
-gethingsdone() {
+getthingsdone() {
 MSGS="CAPTURE: Collect what has your attention
 CLARIFY: Process what it means
 ORGANIZE: Put it where it belongs
@@ -173,5 +173,5 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
 # Custom function aliases moved to bin folder
- alias gtd='gtd'
+ alias gtd='getthingsdone'
 
