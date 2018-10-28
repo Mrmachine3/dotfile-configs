@@ -63,6 +63,7 @@ export UPDATE_ZSH_DAYS=7
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  profiles
   git
   github
   docker
@@ -142,4 +143,13 @@ source $ZSH/oh-my-zsh.sh
  alias github='web_search github'
 
 # Directory cloning aliases
- alias clone='rclone sync $HOME/Desktop/dpu_cybersec remote:dpu_cybersec'
+ alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
+
+# OMZ plugin aliases
+ alias tmux='tmux -2'
+ alias ta='tmux attach -t'
+ alias tad='tmux attach -d -t'
+ alias ts='tmux new-session -s'
+ alias tl='tmux list-sessions'
+ alias tksv='tmux kill-server'
+ alias tkss='tmux kill-session -t'
