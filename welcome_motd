@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Print ASCII welcom art
+cat << "EOF" 
+ _       __     __                        
+| |     / /__  / /________  ____ ___  ___ 
+| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \
+| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/
+|__/|__/\___/_/\___/\____/_/ /_/ /_/\___/ 
+                                          
+    __  ___          __  ___           __    _          
+   /  |/  /____     /  |/  /___ ______/ /_  (_)___  ___ 
+  / /|_/ / ___/    / /|_/ / __ `/ ___/ __ \/ / __ \/ _ \
+ / /  / / /  _    / /  / / /_/ / /__/ / / / / / / /  __/
+/_/  /_/_/  (_)  /_/  /_/\__,_/\___/_/ /_/_/_/ /_/\___/ 
+  
+EOF
+
+# Display random quote upon logging onto terminal
+MSGS=(
+"Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
+"If you're going through hell, keep going. ― Winston Churchill"
+"Never, never, never give up. ― Winston Churchill"
+"Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
+"Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+)
+
+MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
+
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+
+# Display goals
+echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n" | fold -s
+
+
+

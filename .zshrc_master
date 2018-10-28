@@ -70,6 +70,7 @@ plugins=(
   battery
   web-search
   tmux
+  #systemadmin
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,6 +113,9 @@ source $ZSH/oh-my-zsh.sh
  alias hs='history|grep -i'
  alias c='clear'
  alias now='date +"%T"'
+
+# File management aliases
+ alias rmdir='sudo rm -rv '
 
 # confirmation aliases
  alias mv='mv -i'
