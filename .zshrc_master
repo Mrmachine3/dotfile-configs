@@ -151,7 +151,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Directory cloning aliases
  alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
- alias seeclone='echo "rclone sync /home/mrmachine/Desktop/dpu_masters remote:dpu_cybersec"'
 
 # OMZ plugin aliases
  alias tmux='tmux -2'
@@ -163,8 +162,8 @@ source $ZSH/oh-my-zsh.sh
  alias tkss='tmux kill-session -t'
 
 # Markdown conversion and PDF maker aliases
-# alias makepdf='pandoc $2 -t beamer -o $3'			# Debug this alias
-# alias viewpdf='mupdf $2'							# Debug this alias
+ alias makepdf='echo "	pandoc <file1>.* -t beamer -o <file1>.pdf"'
+ alias viewpdf='echo "	mupdf <file1>.pdf"'
 
 getthingsdone() {
 MSGS="CAPTURE: Collect what has your attention
@@ -180,7 +179,26 @@ echo " " && printf '%s\n' "$MSGS" | fold -s && echo " "
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
-# Custom function aliases moved to bin folder
+aliashelp() {
+HELP="makepdf	pandoc <file1>.* -t beamer -o <file1>.pdf
+gstat		git status
+gadd		git add
+gull		git pull
+gcom		git commit -m
+gush		git push
+google		web_search google
+youtube		web_search google youtube
+clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
+makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
+viewpdf		mupdf <file1>.pd"
+
+# Print array
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo " " && printf '%s\n' "$HELP" | fold -s && echo " "
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+}
+
+# Custom function aliases
  alias gtd='getthingsdone'
  alias dim='echo "window size: $(tput cols)x$(tput lines)"'
-
+ alias help='aliashelp'
