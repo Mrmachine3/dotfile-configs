@@ -162,6 +162,10 @@ source $ZSH/oh-my-zsh.sh
  alias tksv='tmux kill-server'
  alias tkss='tmux kill-session -t'
 
+# Markdown conversion and PDF maker aliases
+# alias makepdf='pandoc $2 -t beamer -o $3'			# Debug this alias
+# alias viewpdf='mupdf $2'							# Debug this alias
+
 getthingsdone() {
 MSGS="CAPTURE: Collect what has your attention
 CLARIFY: Process what it means
@@ -178,4 +182,5 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
 # Custom function aliases moved to bin folder
  alias gtd='getthingsdone'
+ alias dim='echo "window size: $(tput cols)x$(tput lines)"'
 
