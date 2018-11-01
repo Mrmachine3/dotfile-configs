@@ -23,6 +23,7 @@ MSGS=(
 "Never, never, never give up. ― Winston Churchill"
 "Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
 "Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+"UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
 )
 
 MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}

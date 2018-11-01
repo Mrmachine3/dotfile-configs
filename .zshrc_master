@@ -5,17 +5,9 @@ export PATH=/usr/local/share/python:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="${PWD}/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# Set name of the theme to load.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="machinemode"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "michelebolgna" "junkfood" "dallas")
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,17 +43,13 @@ export UPDATE_ZSH_DAYS=7
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM=$ZSH/custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   profiles
   git
@@ -74,10 +62,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
+i
 # User configuration
-# You may need to manually set your language environment
-
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -93,6 +79,45 @@ source $ZSH/oh-my-zsh.sh
 # SSH
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Greet myself when a terminal is started
+# greetings() {
+cat << "EOF" 
+ _       __     __                        
+| |     / /__  / /________  ____ ___  ___ 
+| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \
+| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/
+|__/|__/\___/_/\___/\____/_/ /_/ /_/\___/ 
+                                          
+    __  ___          __  ___           __    _          
+   /  |/  /____     /  |/  /___ ______/ /_  (_)___  ___ 
+  / /|_/ / ___/    / /|_/ / __ `/ ___/ __ \/ / __ \/ _ \
+ / /  / / /  _    / /  / / /_/ / /__/ / / / / / / /  __/
+/_/  /_/_/  (_)  /_/  /_/\__,_/\___/_/ /_/_/_/ /_/\___/ 
+  
+EOF
+
+# Display random quote upon logging onto terminal
+MSGS=(
+"Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
+"If you're going through hell, keep going. ― Winston Churchill"
+"Never, never, never give up. ― Winston Churchill"
+"Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
+"Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+"UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
+"You haven't come this far, to only come this far"
+"Explain better with twice as much thought, but half as much content"
+)
+
+MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+
+# Display goals
+echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n" | fold -s
+#}
+
 
 # SET PERSONAL ALIASES
 # zshrc configuration aliases
@@ -105,22 +130,18 @@ source $ZSH/oh-my-zsh.sh
 
 # Filesystem aliases
  alias all='ls -arlFh'
- alias ls.='ls -ld .*'
- alias home='cd'
  alias desk='cd ~/Desktop'
  alias ..='cd ..; ls -al'
- alias cd..='cd ..; ls -al'
+ alias cd..='..'
  alias ...='cd ..; cd ..; ls -al'
  alias ls='ls -alh'
- alias h='history'
  alias hs='history|grep -i'
- alias c='clear'
  alias now='date +"%T"'
 
 # File management aliases
  alias rmdir='sudo rm -rv '
 
-# confirmation aliases
+# Filesystem confirmation aliases
  alias mv='mv -i'
  alias cp='cp -i'
  alias rm='rm -i'
@@ -152,6 +173,7 @@ source $ZSH/oh-my-zsh.sh
 # Directory cloning aliases
  alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
 
+
 # OMZ plugin aliases
  alias tmux='tmux -2'
  alias ta='tmux attach -t'
@@ -164,6 +186,7 @@ source $ZSH/oh-my-zsh.sh
 # Markdown conversion and PDF maker aliases
  alias makepdf='echo "	pandoc <file1>.* -t beamer -o <file1>.pdf"'
  alias viewpdf='echo "	mupdf <file1>.pdf"'
+
 
 getthingsdone() {
 MSGS="CAPTURE: Collect what has your attention
@@ -180,7 +203,7 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
 aliashelp() {
-HELP="makepdf	pandoc <file1>.* -t beamer -o <file1>.pdf
+aliashelp="makepdf	pandoc <file1>.* -t beamer -o <file1>.pdf
 gstat		git status
 gadd		git add
 gull		git pull
@@ -194,7 +217,7 @@ viewpdf		mupdf <file1>.pd"
 
 # Print array
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-echo " " && printf '%s\n' "$HELP" | fold -s && echo " "
+echo " " && printf '%s\n' "$aliashelp" | fold -s && echo " "
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 

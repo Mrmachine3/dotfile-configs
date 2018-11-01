@@ -52,6 +52,7 @@ sleep 1
 # Create subdirectories in notes subfolder
 cd "$DESK"/"$DIR"/notes && sleep 1
 mkdir flashcards; mkdir images
+touch $(date +%m-d-%y)_notes.md
 echo "Creating flashcards and images sub-folders in notes folder..."
 sleep 1
 
@@ -104,3 +105,4 @@ echo " "
 # check if year director exists, if so skip
 # check if quarter director exists, if so skip
 # add about.md file to base directory to give introduction to master's program
+

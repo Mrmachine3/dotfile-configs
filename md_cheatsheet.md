@@ -17,7 +17,7 @@ _bold italic text_**
 ~~stricken text~~
 
 ##LISTS
-1. 1<sup>st</sup> ordered item
+1. 1^st^ ordered item
 2. 2<sup>nd</sup> ordered item
   -1<sup>st</sup> unordered item
   -2<sup>nd</sup> unordered item
