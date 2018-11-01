@@ -1,4 +1,7 @@
 #!/bin/bash
+todaynotes=$(date +"%m%d%Y")
+today=$(date +"%m/%d/%Y")
+
 # A bash script to  create the following directory tree:
 # /home/mrmachine/Desktop/$BASE
 #    ├── YEAR
@@ -13,51 +16,67 @@
 #    │   │   │   │   ├── flashcards
 #    │   │   │   ├── homework
 
-echo -n "Enter name of base directory: "
+
+echo -n "Enter name of your base directory:" 
 read BASE
-echo -n "Enter year: "
-read YEAR
-echo -n "Enter academic quarter: "
-read QTR
-echo -n "Enter course #: "
-read COURSE
-echo -n "Enter course title: "
-read TITLE
-sleep 1
+
+if [[ ! -d $BASE ]] 
+then
+	echo "Creating $BASE directory tree structure..."
+	mkdir $BASE && echo -n "Enter academic year (YYYY):"
+	read YEAR
+else
+	cd $BASE && echo -n "Enter academic year (YYYY):"
+	read YEAR
+	if [[ ! -d $YEAR ]] 
+	then
+		cd $BASE && mkdir $YEAR && sleep 1
+		echo -n "Enter academic quarter ({WQ/SQ/FQ}YY):"
+		read QTR
+	else
+		cd $YEAR && echo -n "Enter academic quarter ({WQ/SQ/FQ}YY):"
+		read QTR
+		if [[ ! -d $QTR ]]
+		then 
+			cd $YEAR && mkdir $QTR && sleep 1
+			echo -n "Enter course # (example TDC-411):" 
+			read COURSE 
+			cd $QTR && sleep 1
+			mkdir $COURSE && echo -n "Enter course title:"
+			read TITLE && sleep 1
+		else
+			sleep 1
+		fi;
+	fi;
+fi;
 
 # Defining directory filepath
 DIR="$BASE"/"$YEAR"/"$QTR"/"$COURSE"
 DESK="$HOME"/Desktop
 
-# Creating base directory structure
-echo "Creating $BASE directory tree structure..."
-mkdir -p "$DIR" && sleep 1
-
 # Creating course intro about markdown file within course subdirectory
-cd "$DIR" && touch ABOUT.md
+cd "$COURSE" && touch ABOUT.md
 sleep 1
+echo "Creating $COURSE markdown file..."
 echo "<!---$COURSE - $TITLE-->" >> ABOUT.md
 echo "<!---Professor -->" >> ABOUT.md
-echo "<!---Created date: $(date +%m-%d-%Y)-->" >> ABOUT.md
-echo "<!---Created by: Mr. Machine-->" >> ABOUT.md
-echo "Creating $COURSE markdown file..."
+echo "<!---Created date: $today -->" >> ABOUT.md
+echo "<!---Created by: $USER -->" >> ABOUT.md
 sleep 1
 
 # Creating subdirectories in course folder
-cd "$DESK"/"$DIR"
-mkdir admin; mkdir archive; mkdir research; mkdir notes
-echo "Creating admin, archive, research, notes sub-folders in $COURSE folder..."
+mkdir admin; mkdir archive; mkdir research; mkdir notes; mkdir homework
+echo "Creating admin, archive, research, notes, homework sub-folders in $COURSE folder..."
 sleep 1
 
 # Create subdirectories in notes subfolder
-cd "$DESK"/"$DIR"/notes && sleep 1
+cd notes && sleep 1
 mkdir flashcards; mkdir images
-touch $(date +%m-d-%y)_notes.md
-echo "Creating flashcards and images sub-folders in notes folder..."
+touch classnotes_"$todaynotes".md
+echo "Creating flashcards and images sub-folders in $COURSE/notes folder..."
 sleep 1
 
 echo " "
-
 # Display progress bar 
 function ProgressBar {
 # Process data
@@ -96,13 +115,9 @@ sleep 1
 tree -aC $NEWTREE
 
 printf '\nFinished...dirmaker.sh script completed successfully!\n'
-echo "The $BASE directory tree created on" $(date +%m-%d-%Y)
+echo "The $BASE directory tree created on $today"
 echo " "
 
 #To Do
-# check if base directory exists, if so skip
 # validate base directory name by only allowing "dpu_masters"
-# check if year director exists, if so skip
-# check if quarter director exists, if so skip
-# add about.md file to base directory to give introduction to master's program
-
+# add about masters program md file to base directory
