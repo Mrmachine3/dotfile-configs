@@ -1,0 +1,7 @@
+# remap prefeix from 'C-b' to 'C-p'
+unbind C-b
+set-option -g prefix C-p
+bind-key C-p send-prefix
+
+# Start window numbering at 1
+set -g base-index 1

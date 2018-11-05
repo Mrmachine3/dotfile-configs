@@ -1,4 +1,4 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -77,9 +77,9 @@ source $ZSH/oh-my-zsh.sh
 # SSH
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Greet myself when a terminal is started
-# greetings() {
-cat << "EOF" 
+# Custom greeting at Terminal
+hello() {
+    cat <<"EOF"
  _       __     __                        
 | |     / /__  / /________  ____ ___  ___ 
 | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \
@@ -91,30 +91,9 @@ cat << "EOF"
   / /|_/ / ___/    / /|_/ / __ `/ ___/ __ \/ / __ \/ _ \
  / /  / / /  _    / /  / / /_/ / /__/ / / / / / / /  __/
 /_/  /_/_/  (_)  /_/  /_/\__,_/\___/_/ /_/_/_/ /_/\___/ 
-  
+      
 EOF
-
-# Display random quote upon logging onto terminal
-MSGS=(
-"Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
-"If you're going through hell, keep going. ― Winston Churchill"
-"Never, never, never give up. ― Winston Churchill"
-"Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
-"Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
-"UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
-"You haven't come this far, to only come this far"
-"Explain better with twice as much thought, but half as much content"
-)
-
-MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
-
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-
-# Display goals
-echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
-#}
+    }
 
 # SET PERSONAL ALIASES
 # zshrc configuration aliases
@@ -187,40 +166,74 @@ echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrit
  alias viewpdf='echo "	mupdf <file1>.pdf"'
 
 # Custom Get Things Done function
-function getthingsdone {
-MSGS="CAPTURE: Collect what has your attention
+function gtd {
+    MSGS="
+CAPTURE: Collect what has your attention
 CLARIFY: Process what it means
 ORGANIZE: Put it where it belongs
 REFLECT: Review frequently
 ENGAGE: Just do it!"
-
-# Print array
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-echo "Get Things Done Mindset" 
-echo " " && printf '%s\n' "$MSGS" | fold -s && echo " "
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-}
+    
+    # Print array
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo "Get Things Done Mindset" 
+    echo "" && printf '%s\n' "$MSGS" | fold -s && echo ""
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
 
 # Custom Alias help function
 function aliashelp {
-aliashelp="gstat		git status
-gadd		git add
-gull		git pull
-gcom		git commit -m
-gush		git push
-google		web_search google
-youtube		web_search google youtube
-clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
-makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
-viewpdf		mupdf <file1>.pd"
+    aliashelp="
+    gstat		git status
+    gadd		git add
+    gull		git pull
+    gcom		git commit -m
+    gush		git push
+    google		web_search google
+    youtube		web_search google youtube
+    clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
+    makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
+    viewpdf		mupdf <file1>.pd
+    dim			# prints current terminal window dimensions
+    goals		# print goals
+    gtd			# print Get Things Done mantra
+    quote		# print random quotes
+    hello		# prints custom ascii art"
+    
+    # Print array
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo " " && printf '%s\n' "$aliashelp" | fold -s && echo " "
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
 
-# Print array
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-echo " " && printf '%s\n' "$aliashelp" | fold -s && echo " "
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-}
+## Display goals
+goals () {
+    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
+    }
+
+quote() {
+    # Display random quote upon logging onto terminal
+    MSGS=(
+    "Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
+    "If you're going through hell, keep going. ― Winston Churchill"
+    "Never, never, never give up. ― Winston Churchill"
+    "Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
+    "Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+    "UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
+    "You haven't come this far, to only come this far"
+    "Explain better with twice as much thought, but half as much content"
+    )
+    
+    MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
+    
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
+
+function dim {
+echo "window size: $(tput cols)x$(tput lines)"
+    }
 
 # Custom function aliases
- alias gtd='getthingsdone'
- alias dim='echo "window size: $(tput cols)x$(tput lines)"'
  alias aliashelp='aliashelp'
