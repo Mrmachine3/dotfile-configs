@@ -1,11 +1,9 @@
-# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="${PWD}/.oh-my-zsh"
 
-# Set name of the theme to load.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="machinemode"
 
@@ -62,7 +60,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-i
+
 # User configuration
 # export LANG=en_US.UTF-8
 
@@ -115,9 +113,8 @@ echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
 # Display goals
-echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n" | fold -s
+echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
 #}
-
 
 # SET PERSONAL ALIASES
 # zshrc configuration aliases
@@ -134,12 +131,14 @@ echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrit
  alias ..='cd ..; ls -al'
  alias cd..='..'
  alias ...='cd ..; cd ..; ls -al'
- alias ls='ls -alh'
+ alias lsa='ls -alh'
+ alias ls='ls -lh'
  alias hs='history|grep -i'
  alias now='date +"%T"'
 
 # File management aliases
  alias rmdir='sudo rm -rv '
+ alias tree='tree -aC $1'
 
 # Filesystem confirmation aliases
  alias mv='mv -i'
@@ -162,7 +161,7 @@ echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrit
  alias pyfind='find . -name "*.py"'
  alias deact='deactivate'
  alias act27='source vpy27/bin/activate'
- alias act36='source vpy36/bin/activate'
+ alias act36='source vpy36/bin/activate'i
 
 # Web-search aliases
  alias google='web_search google'
@@ -187,8 +186,8 @@ echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrit
  alias makepdf='echo "	pandoc <file1>.* -t beamer -o <file1>.pdf"'
  alias viewpdf='echo "	mupdf <file1>.pdf"'
 
-
-getthingsdone() {
+# Custom Get Things Done function
+function getthingsdone {
 MSGS="CAPTURE: Collect what has your attention
 CLARIFY: Process what it means
 ORGANIZE: Put it where it belongs
@@ -202,9 +201,9 @@ echo " " && printf '%s\n' "$MSGS" | fold -s && echo " "
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
-aliashelp() {
-aliashelp="makepdf	pandoc <file1>.* -t beamer -o <file1>.pdf
-gstat		git status
+# Custom Alias help function
+function aliashelp {
+aliashelp="gstat		git status
 gadd		git add
 gull		git pull
 gcom		git commit -m
@@ -224,4 +223,4 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 # Custom function aliases
  alias gtd='getthingsdone'
  alias dim='echo "window size: $(tput cols)x$(tput lines)"'
- alias help='aliashelp'
+ alias aliashelp='aliashelp'

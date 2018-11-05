@@ -17,45 +17,41 @@ today=$(date +"%m/%d/%Y")
 #    │   │   │   ├── homework
 
 
-echo -n "Enter name of your base directory:" 
+echo -n "Enter name of your base directory: " 
 read BASE
 
-if [[ ! -d $BASE ]] 
+if [[ -d $BASE ]] 
 then
-	echo "Creating $BASE directory tree structure..."
-	mkdir $BASE && echo -n "Enter academic year (YYYY):"
+	cd $BASE && echo -n "Enter academic year (YYYY): "
 	read YEAR
 else
-	cd $BASE && echo -n "Enter academic year (YYYY):"
-	read YEAR
-	if [[ ! -d $YEAR ]] 
+	if [[ -d $YEAR ]] 
 	then
-		cd $BASE && mkdir $YEAR && sleep 1
-		echo -n "Enter academic quarter ({WQ/SQ/FQ}YY):"
+		cd $YEAR && echo -n "Enter academic quarter ({WQ/SQ/FQ}YY): "
 		read QTR
 	else
-		cd $YEAR && echo -n "Enter academic quarter ({WQ/SQ/FQ}YY):"
-		read QTR
-		if [[ ! -d $QTR ]]
+		if [[ -d $QTR ]]
 		then 
-			cd $YEAR && mkdir $QTR && sleep 1
-			echo -n "Enter course # (example TDC-411):" 
-			read COURSE 
-			cd $QTR && sleep 1
-			mkdir $COURSE && echo -n "Enter course title:"
-			read TITLE && sleep 1
+			cd $QTR && echo -n "Enter course # (example TDC-411): " 
+			read COURSE; sleep 1 && echo -n "Enter course title: " && read TITLE; sleep 1
+			cd $COURSE
 		else
-			sleep 1
+			echo "Creating $BASE directory tree structure..." && mkdir $BASE && cd $BASE
+			echo -n "Enter academic year: " && read YEAR && mkdir $YEAR && cd $YEAR
+			echo -n "Enter academic quarter ({WQ/SQ/FQ}YY): " && read QTR && mkdir $QTR && cd $QTR
+			echo -n "Enter course # (example TDC-411): " && read COURSE && mkdir $COURSE && cd $COURSE
+			echo -n "Enter course title: " && read TITLE
 		fi;
 	fi;
 fi;
 
 # Defining directory filepath
-DIR="$BASE"/"$YEAR"/"$QTR"/"$COURSE"
 DESK="$HOME"/Desktop
+BASE="$BASE"
+TREE="$BASE"/"$YEAR"/"$QTR"/"$COURSE"
 
-# Creating course intro about markdown file within course subdirectory
-cd "$COURSE" && touch ABOUT.md
+# Creating course intro about markdown file within course subdirectory 
+touch ABOUT.md 
 sleep 1
 echo "Creating $COURSE markdown file..."
 echo "<!---$COURSE - $TITLE-->" >> ABOUT.md
@@ -74,48 +70,43 @@ cd notes && sleep 1
 mkdir flashcards; mkdir images
 touch classnotes_"$todaynotes".md
 echo "Creating flashcards and images sub-folders in $COURSE/notes folder..."
-sleep 1
+sleep 1 && cd $DESK/$BASE
 
 echo " "
 # Display progress bar 
 function ProgressBar {
-# Process data
-	let _progress=(${1}*100/${2}*100)/100
-	let _done=(${_progress}*4)/10
-	let _left=40-$_done
-# Build progressbar string lengths
-	_done=$(printf "%${_done}s")
-	_left=$(printf "%${_left}s")
+	# Process data
+		let _progress=(${1}*100/${2}*100)/100
+		let _done=(${_progress}*4)/10
+		let _left=40-$_done
+	# Build progressbar string lengths
+		_done=$(printf "%${_done}s")
+		_left=$(printf "%${_left}s")
 
-# 1.2 Build progressbar strings and print the ProgressBar line
-# 1.2.1 Output example:
-# 1.2.1.1 Progress : [########################################] 100%
-printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
-
+	# 1.2 Build progressbar strings and print the ProgressBar line
+	# 1.2.1 Progress : [########################################] 100%
+	printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
 }
 
-# Variables
-_start=1
-
-# This accounts as the "totalState" variable for the ProgressBar function
-_end=100
+# This accounts as the totalState variable for the ProgressBar function
+	_start=1
+	_end=100
 
 # Proof of concept
 for number in $(seq ${_start} ${_end})
-do
-	sleep 0.1
-	ProgressBar ${number} ${_end}
-done
+	do
+		sleep 0.05
+		ProgressBar ${number} ${_end}
+	done
 
 # command line feedback on directory tree generation
-cd "$DESK"/"$BASE"
-export NEWTREE=~/Desktop/$BASE
-echo " "
-sleep 1
+cd ~/Desktop/$BASE
+export NEWTREE=$PWD
+echo " " && sleep 1
 tree -aC $NEWTREE
 
-printf '\nFinished...dirmaker.sh script completed successfully!\n'
-echo "The $BASE directory tree created on $today"
+printf "\nFinished...dirmaker.sh script completed successfully!\n"
+echo "The $BASE directory tree was created on $today"
 echo " "
 
 #To Do
