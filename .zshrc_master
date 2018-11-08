@@ -16,7 +16,6 @@ ZSH_THEME="machinemode"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=7
 
@@ -65,11 +64,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+else
+   export EDITOR='mvim'
+fi
 
 # COMPILATION FLAGS
 # export ARCHFLAGS="-arch x86_64"
@@ -80,6 +79,7 @@ source $ZSH/oh-my-zsh.sh
 # Custom greeting at Terminal
 hello() {
     cat <<"EOF"
+
  _       __     __                        
 | |     / /__  / /________  ____ ___  ___ 
 | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \
@@ -112,7 +112,8 @@ EOF
  alias ...='cd ..; cd ..; ls -al'
  alias lsa='ls -alh'
  alias ls='ls -lh'
- alias hs='history|grep -i'
+ alias hs='history| grep -i'
+ alias cat='nl -ba $1 | less'
  alias now='date +"%T"'
 
 # File management aliases
@@ -136,12 +137,6 @@ EOF
  alias gcom='git commit -m'
  alias gush='git push'
 
-# Python venv aliases
- alias pyfind='find . -name "*.py"'
- alias deact='deactivate'
- alias act27='source vpy27/bin/activate'
- alias act36='source vpy36/bin/activate'i
-
 # Web-search aliases
  alias google='web_search google'
  alias gmail='web_search google gmail'
@@ -150,7 +145,6 @@ EOF
 
 # Directory cloning aliases
  alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
-
 
 # OMZ plugin aliases
  alias tmux='tmux -2'
@@ -208,7 +202,7 @@ function aliashelp {
 
 ## Display goals
 goals () {
-    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
+    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn to program Ansible playbooks for infrastructure deployments\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
     }
 
 quote() {
