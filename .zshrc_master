@@ -187,7 +187,7 @@ function aliashelp {
     youtube		web_search google youtube
     clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
     makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
-    viewpdf		mupdf <file1>.pd
+    viewpdf		zathura <file1>.pd
     dim			# prints current terminal window dimensions
     goals		# print goals
     gtd			# print Get Things Done mantra
