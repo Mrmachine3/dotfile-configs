@@ -124,6 +124,7 @@ EOF
  alias mv='mv -i'
  alias cp='cp -i'
  alias rm='rm -i'
+ alias find='grep -rnw './' -e '$1''
 
 #Command line head/tail shortcuts
  alias -g H='| head'
@@ -192,6 +193,7 @@ function aliashelp {
     goals		# print goals
     gtd			# print Get Things Done mantra
     quote		# print random quotes
+    scrot		# take screenshot of terminal form CLI and move to director
     hello 		# prints custom ascii art"
     
     # Print array
@@ -230,10 +232,13 @@ echo "window size: $(tput cols)x$(tput lines)"
     }
 
 #Jekyll Aliases
- alias jserve='bundle update; bundle install; bundle exec jekyll serve'
- alias jbuild='jekyll clean; bundle exec jekyll build'
+ alias bundleup='bundle update; bundle install'
+ alias jserve='bundleup; jekyll serve --watch'
+ alias jdraft='bundleup; jekyll serve --draft'
+ alias jbuild='jekyll clean; jekyll build'
  alias jdoc='jekyll doctor; jekyll clean; jserve'
 
 # Custom function aliases
  alias aliashelp='aliashelp'
  alias hello='hello'
+ alias scrot='scrot -b -d 2 '%m-%d-%Y_terminalscrot.png'
