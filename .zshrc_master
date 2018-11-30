@@ -229,6 +229,11 @@ function dim {
 echo "window size: $(tput cols)x$(tput lines)"
     }
 
+#Jekyll Aliases
+ alias jserve='bundle update; bundle install; bundle exec jekyll serve'
+ alias jbuild='jekyll clean; bundle exec jekyll build'
+ alias jdoc='jekyll doctor; jekyll clean; jserve'
+
 # Custom function aliases
  alias aliashelp='aliashelp'
  alias hello='hello'
