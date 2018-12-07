@@ -193,7 +193,6 @@ function aliashelp {
     goals		# print goals
     gtd			# print Get Things Done mantra
     quote		# print random quotes
-    scrot		# take screenshot of terminal form CLI and move to director
     hello 		# prints custom ascii art"
     
     # Print array
@@ -241,4 +240,3 @@ echo "window size: $(tput cols)x$(tput lines)"
 # Custom function aliases
  alias aliashelp='aliashelp'
  alias hello='hello'
- alias scrot='scrot -b -d 2 '%m-%d-%Y_terminalscrot.png'
