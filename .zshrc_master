@@ -1,6 +1,24 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
 
+# <<< conda init <<<
+# added by Anaconda3 5.3.1 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/mrmachine/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/mrmachine/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mrmachine/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/mrmachine/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
 # Path to your oh-my-zsh installation.
 export ZSH="${PWD}/.oh-my-zsh"
 
@@ -28,14 +46,6 @@ export UPDATE_ZSH_DAYS=7
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -45,7 +55,6 @@ export UPDATE_ZSH_DAYS=7
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=$ZSH/custom
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
   profiles
@@ -105,16 +114,21 @@ EOF
  alias cowsay='/usr/games/fortune | /usr/games/cowsay -n'
 
 # Filesystem aliases
- alias all='ls -arlFh'
- alias desk='cd ~/Desktop'
+ alias all='ls -arlFhG'
  alias ..='cd ..; ls -al'
  alias cd..='..'
  alias ...='cd ..; cd ..; ls -al'
- alias lsa='ls -alh'
- alias ls='ls -lh'
+ alias ls='ls -al'
+ alias lsa='ls -lh | grep "^d" && ls -lh | grep -v "^d"'
  alias hs='history| grep -i'
- alias nl='nl ba $1 | less'
  alias now='date +"%T"'
+
+# Project shortcut aliases
+ alias desk='cd; cd ~/Desktop; lsa'
+ alias blog='cd; cd ~/Desktop/JEKYLL/mrmachine3.github.io; lsa'
+ alias seccam='cd; cd ~/Desktop/PROJECTS/RPiSec_Cam; lsa'
+ alias elk='cd; cd ~/Desktop/PROJECTS/4RPi_ELKstack; lsa'
+ alias note='cd; cd ~/Desktop/PROJECTS/jupyter_work; lsa' 
 
 # File management aliases
  alias rmdir='sudo rm -rv '
@@ -132,11 +146,13 @@ EOF
  alias -g G='| grep'
  
 # Git aliases
- alias gstat='git status'
- alias gadd='git add'
- alias gull='git pull'
- alias gcom='git commit -m'
- alias gush='git push'
+ alias gs='git status'
+ alias ga='git add'
+ alias gp='git pull'
+ alias gc='git commit -m'
+ alias gsh='git push'
+ alias gch='git checkout'
+ alias gbr='git branch'
 
 # Web-search aliases
  alias google='web_search google'
@@ -158,20 +174,23 @@ EOF
 
 # Markdown conversion and PDF maker aliases
  alias makepdf='echo "	pandoc <file1>.* -t beamer -o <file1>.pdf"'
- alias viewpdf='echo "	mupdf <file1>.pdf"'
+ alias view='pandoc $1 | lynx -stdin'
+ alias open='xdg-open $1'
 
 # Custom Get Things Done function
-function gtd {
+function cert {
     MSGS="
-CAPTURE: Collect what has your attention
-CLARIFY: Process what it means
-ORGANIZE: Put it where it belongs
-REFLECT: Review frequently
-ENGAGE: Just do it!"
+Comptia A+
+Comptia Network+
+Comptia Security+
+Comptia CySA+
+Comptia PenTest+
+Comptia CASP
+CISSP*
     
     # Print array
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-    echo "Get Things Done Mindset" 
+    echo "CERTIFICATIONS" 
     echo "" && printf '%s\n' "$MSGS" | fold -s && echo ""
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
     }
@@ -179,21 +198,24 @@ ENGAGE: Just do it!"
 # Custom Alias help function
 function aliashelp {
     aliashelp="
-    gstat		git status
-    gadd		git add
-    gull		git pull
-    gcom		git commit -m
-    gush		git push
+    gs			git status
+    ga			git add
+    gp			git pull
+    gc			git commit -m
+    gsh			git push
+    gch			git checkout
+    gbr			git branch
     google		web_search google
     youtube		web_search google youtube
     clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
     makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
-    viewpdf		zathura <file1>.pd
+    open		xdg-open <filename>.pdf
     dim			# prints current terminal window dimensions
-    goals		# print goals
-    gtd			# print Get Things Done mantra
+    goals		# print career goals
+    cert		# print certification goals
     quote		# print random quotes
-    hello 		# prints custom ascii art"
+    hello 		# prints custom ascii art
+    saver		# Matrix style screensaver"
     
     # Print array
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
@@ -203,7 +225,7 @@ function aliashelp {
 
 ## Display goals
 goals () {
-    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn to program Ansible playbooks for infrastructure deployments\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\vCERTIFICATIONS \n\tComptia Network+, Security+, Linux+, CySA+, CASP\n" | fold -s
+    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn to program Ansible playbooks for infrastructure deployments\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\v" | fold -s
     }
 
 quote() {
@@ -217,6 +239,27 @@ quote() {
     "UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
     "You haven't come this far, to only come this far"
     "Explain better with twice as much thought, but half as much content"
+    "If you don't fight for what you want, don't cry for what you lose"
+    "If your actions inspire others to dream more, learn more, do more, become more, then you are a leader"
+    "Leaders do daily what others do occasionally"
+    "Knowledge is being aware of what you can do. Wisdom is knowing when NOT to do it"
+    "Whether you think you can or you think you can't, you're right"
+    "Be happy with what you have, while you work for what you want"
+    "When you know what you want, and you want it bad enough...you'll find a way to get it"
+    "It doesn't matter how slow you go, as long as you don't stop"
+    "Failure is the opportunity to begin again more intelligently"
+    "Succss is not final. Failure is not fatal. It is the courage to continue that counts ― Winston Churchill"
+    "Hardships prepare ordinary people for extraordinary things ― C.S Lewis"
+    "Not until we are lost do we being to understand ourselves"
+    "Discipline has within it the potential for creating future miracles"
+    "If it is important, you will find a way; if not, you will find an excuse"
+    "Everything worthwhile costs time"
+    "RULE #1: Never tell everything you know"
+    "Plans without execution are just dreams"
+    "What's right is what's left after you've done everything else wrong"
+    "Success is stumbling from failure to failure without the loss of enthusiasm"
+    "The more you concern yourself with the path of another...the farther you stray from your own."
+    "It's not about what you walk away from, it's about what you walk away with"
     )
     
     MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
@@ -240,3 +283,5 @@ echo "window size: $(tput cols)x$(tput lines)"
 # Custom function aliases
  alias aliashelp='aliashelp'
  alias hello='hello'
+ alias saver='cmatrix -Bsu 7'
+
