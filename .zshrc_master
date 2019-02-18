@@ -104,11 +104,15 @@ function hello {
 EOF
     }
 
+#Activate ViM mode with Esc
+set -o vi
+
 # SET PERSONAL ALIASES
 # zshrc configuration aliases
  alias zshrc='${=EDITOR} ~/.zshrc'
  alias ohmyzsh='${=EDITOR} ~/.oh-my-zsh'
  alias .zsh='source ~/.zshrc'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Fun aliases
  alias cowsay='/usr/games/fortune | /usr/games/cowsay -n'
@@ -116,7 +120,7 @@ EOF
 # Filesystem aliases
  alias all='ls -arlFhG'
  alias ..='cd ..; ls -al'
- alias cd..='..'
+ alias cd..='cd ..'
  alias ...='cd ..; cd ..; ls -al'
  alias ls='ls -al'
  alias lsa='ls -lh | grep "^d" && ls -lh | grep -v "^d"'
@@ -129,16 +133,20 @@ EOF
  alias seccam='cd; cd ~/Desktop/PROJECTS/RPiSec_Cam; lsa'
  alias elk='cd; cd ~/Desktop/PROJECTS/4RPi_ELKstack; lsa'
  alias note='cd; cd ~/Desktop/PROJECTS/jupyter_work; lsa' 
+ alias dpu='cd; cd ~/Desktop/SCHOOL/DPU_CYBERSEC; tree' 
+ alias study='cd; cd ~/Desktop/SCHOOL; lsa' 
+ alias course='cd; cd ~/Desktop/SCHOOL/DPU_CYBERSEC/2019/WQ19_TDC411; lsa'
+ alias testdir='cd; cd ~/Desktop/test_dir; lsa' 
 
 # File management aliases
  alias rmdir='sudo rm -rv '
- alias tree='tree -aC $1'
+ alias tree='tree -IC ".*"' # Display tree structure of directories excluding hidden directories
 
 # Filesystem confirmation aliases
  alias mv='mv -i'
  alias cp='cp -i'
  alias rm='rm -i'
- alias find='grep -rnw './' -e '$1''
+#alias find='grep -rnw './' -e '$1''
 
 #Command line head/tail shortcuts
  alias -g H='| head'
@@ -161,7 +169,6 @@ EOF
  alias github='web_search github'
 
 # Directory cloning aliases
- alias clone='rclone sync /home/mrmachine/Desktop/dpucybersec remote:dpu_cybersec'
 
 # OMZ plugin aliases
  alias tmux='tmux -2'
@@ -177,42 +184,15 @@ EOF
  alias view='pandoc $1 | lynx -stdin'
  alias open='xdg-open $1'
 
-# Custom Get Things Done function
-function cert {
-    MSGS="
-Comptia A+
-Comptia Network+
-Comptia Security+
-Comptia CySA+
-Comptia PenTest+
-Comptia CASP
-CISSP*
-    
-    # Print array
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-    echo "CERTIFICATIONS" 
-    echo "" && printf '%s\n' "$MSGS" | fold -s && echo ""
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-    }
-
 # Custom Alias help function
 function aliashelp {
     aliashelp="
-    gs			git status
-    ga			git add
-    gp			git pull
-    gc			git commit -m
-    gsh			git push
-    gch			git checkout
-    gbr			git branch
     google		web_search google
     youtube		web_search google youtube
-    clone		rclone sync ~/Desktop/dpu_masters remote:dpu_cybersec
     makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
     open		xdg-open <filename>.pdf
     dim			# prints current terminal window dimensions
     goals		# print career goals
-    cert		# print certification goals
     quote		# print random quotes
     hello 		# prints custom ascii art
     saver		# Matrix style screensaver"
@@ -225,7 +205,7 @@ function aliashelp {
 
 ## Display goals
 goals () {
-    echo -e "\nDAILY GOALS \n\tPractice python programming or bash scripting\n\tWrite school notes in markdown syntax\n\tUse the ViM Text Editor\n\tUse tmux for terminal session and window pane management\n\tBlog about cybersecurity topics\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tLearn to program Ansible playbooks for infrastructure deployments\n\tLearn Elasticsearch, Logstash, Kibana stack for security analytics\n\tLearn log parsing, i.e. Splunk or Logstash\n\tImprove report writing skills\n\v" | fold -s
+    echo -e "SHORT-TERM GOALS \n\tComplete DataCamp's Data Science with Python Career Track\n\tTransition to minimalist Arch Linux OS\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tAdvance infrastructure deployment automation/administration skills\n\tAdvance security analysis skills\n\tAdvance technical report writing skills\n\tBlog about cybersecurity topics\n\vCERTIFICATION GOALS \n\tComptia A+\n\tComptia Network+\n\tComptia Security+\n\tComptia CySA+\n\tComptia PenTest+\n\tComptia CASP\n\tCISSP*\n\tOSCP*\n\vTOOLS \n\tElasticsearch, Logstash, Kibana/Splunk\n\tSnort, Bro/Suricata\n\tAnsible, Chef/Puppet\n\tLaTeX/ViM/Jupyter Notebooks\n\tArch Linux OS distribution (Daily development workstation)\n\tKali Linux OS distribution (Analysis workstation)" | fold -s
     }
 
 quote() {
@@ -284,4 +264,5 @@ echo "window size: $(tput cols)x$(tput lines)"
  alias aliashelp='aliashelp'
  alias hello='hello'
  alias saver='cmatrix -Bsu 7'
+ alias lotr='cat lotr.txt | espeak -s 115'
 
