@@ -122,8 +122,9 @@ set -o vi
  alias ..='cd ..; ls -al'
  alias cd..='cd ..'
  alias ...='cd ..; cd ..; ls -al'
- alias ls='ls -al'
- alias lsa='ls -lh | grep "^d" && ls -lh | grep -v "^d"'
+ alias ls='ls -l'
+ alias lsa='ls -al'
+ alias lsad='ls -lh | grep "^d" && ls -lh | grep -v "^d"'
  alias hs='history| grep -i'
  alias now='date +"%T"'
 

@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/mrmachine/.oh-my-zsh/custom'
+let g:netrw_dirhist_2='/home/mrmachine/.oh-my-zsh/custom/themes'
+let g:netrw_dirhist_3='/home/mrmachine/Desktop/PROJECTS/RPiSec_Cam/example_code/WebCam-Pan-Tilt-Control-via-Flask/PanTiltControl1'
+let g:netrw_dirhist_4='/home/mrmachine/Desktop/SCHOOL/_scripts'
+let g:netrw_dirhist_5='/home/mrmachine/Desktop/SCHOOL/SELF_STUDY/vimclass'
