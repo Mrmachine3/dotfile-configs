@@ -20,7 +20,8 @@ Plugin 'tpope/vim-eunuch'               " https://github.com/tpope/vim-eunuch
 Plugin 'itchyny/lightline.vim'          " https://github.com/itchyny/lightline.vim
 Plugin 'itchyny/vim-gitbranch'          " https://github.com/itchyny/vim-gitbranch
 Plugin 'christoomey/vim-tmux-navigator' " https://github.com/christoomey/vim-tmux-navigator
-
+Plugin 'vimwiki/vimwiki'                " https://github.com/vimwiki/vimwiki
+"
 " all plugins must be added before the following line
 call vundle#end()               " REQUIRED
 filetype plugin indent on        " REQUIRED
@@ -72,7 +73,23 @@ set vb      		            " Sets the visual bell for error displays
                                 " ViM Autocommands 
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
+
 "###############################################################################
+                                " Vimwiki configuration
+"let wiki1 = {}
+"let wiki_1.path = '~/vimwiki_work_md/'
+"let wiki_1.syntax = 'markdown'
+"let wiki_1.ext = '.md'
+"
+"let wiki_2 = {}
+"let wiki_2.path = '~/vimwiki_personal_md/'
+"let wiki_2.syntax = 'markdown'
+"let wiki_2.ext = '.md'
+"
+"let g:vimwiki_list = [wiki_1, wiki_2]
+"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+"
+""###############################################################################
                                 " Mapped hotkeys
 
 " Mapped leader hotkeys for file workflow efficiencies
