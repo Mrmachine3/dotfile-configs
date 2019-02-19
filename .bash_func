@@ -1,0 +1,104 @@
+#!/bin/bash
+
+# Personal Function Definitions
+
+# Get top fifteen most run bash commands
+function bash_stat() {
+cut -f1 -d" " $HOME/.bash_history | sort | uniq -c | sort -nr | head -n 15
+}
+
+# Handy Extract Program
+function extract() {
+  if [ -f $1 ] ; then
+    case $1 in
+    *.tar.bz2)  tarxvjf $1  ;;
+    *.tar.gz)   tarxvzf $1  ;;
+    *.bz2)      bunzip2 $1  ;;
+    *.rar)      unrarx $1   ;;
+    *.gz)       gunzip $1   ;;
+    *.tar)      tarxvf $1   ;;
+    *.tbz2)     tarxvjf $1  ;;
+    *.tgz)      tarxvzf $1  ;;
+    *.zip)      unzip $1    ;;
+    *.Z)        uncompress $1   ;;
+    *.7z)       7zx $1  ;;
+    *)          echo "'$1' cannot be extracted via >extract<"    ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Creates an archive from given directory
+mktar() { tar cvf  "${1%%/}.tar"   "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
+
+# converts spaces in filename to _
+function no_spaces() {
+  for file ; do
+    filename=${file##*/}
+    case "$filename" in
+    */*) dirname==${file%/*} ;;
+    *) dirname=.;;
+    esac
+    nf=$(echo $filename | sed -E 's/[[:space:]]+/_/g')
+    newname="${dirname}/${nf}"
+    if [ "$nf" != "$filename" ]; then
+      mv "$file" "$newname"
+      echo "no_spaces: $file --> $newname"
+    else
+      echo "no_spaces: $file not changed."
+    fi
+  done
+}
+
+# Make directory and move into it
+function mkcd() {
+  mkdir -p $1 && cd $1
+}
+
+# Get current host related info
+#function hi() {
+#  echo -e "${RED}You are logged on:${RESET}" ; hostname
+#  echo -e "\n${RED}Additionnal information:${RESET}" ; uname -a
+#  echo -e "\n${RED}Current date:${RESET} " ; date
+#  echo -e "\n${RED}Machine stats:${RESET}" ; uptime
+#  echo -e "\n${RED}Memory stats:${RESET}" ; free
+#  echo -e "\n${RED}Disk stats:${RESET}" ; df -kh
+#  my_ip 2>&- ;
+#  echo -e "\n${RED}Local IP Address:${RESET}" ; echo ${MY_IP:-"Not connected"}
+#  echo -e "\n${YELLOW}Users logged on:${RESET}" ; w -h
+#}
+
+#function colortest() {
+#  echo "${BLACK} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${RED} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${GREEN} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${YELLOW} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${BLUE} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${PURPLE} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${CYAN} TEST test ${TXTBLD} TEST test ${RESET}"
+#  echo "${WHITE} TEST test ${TXTBLD} TEST test ${RESET}"
+#}
+
+function colortest2() {
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}mcolour${i}\n"
+  done
+}
+
+# Todo list
+function todo() { 
+  cd ~/.todo||return 1&& l=$(ls -1t|head -n1)&&t=$(date +%Y%m%d);[[ "$1" == "last" ]]&&cp $l $t; ${EDITOR:-vi} $t;cd -;
+  } 
+
+#function ssht () {
+# [[ $1 =~ ^(1|2|3)$ ]] || { echo 'Not a valid last octet value !!' && return ;}
+# ip=123.123.123.$1
+# ssh my_user@"$ip" -p 12345
+#}
+
+############################################################
+# style helpers
+############################################################
