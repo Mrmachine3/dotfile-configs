@@ -75,22 +75,11 @@ au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 
 "###############################################################################
-                                " Vimwiki configuration
-"let wiki1 = {}
-"let wiki_1.path = '~/vimwiki_work_md/'
-"let wiki_1.syntax = 'markdown'
-"let wiki_1.ext = '.md'
-"
-"let wiki_2 = {}
-"let wiki_2.path = '~/vimwiki_personal_md/'
-"let wiki_2.syntax = 'markdown'
-"let wiki_2.ext = '.md'
-"
-"let g:vimwiki_list = [wiki_1, wiki_2]
-"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-"
-""###############################################################################
-                                " Mapped hotkeys
+                               " Vimwiki configuration
+let g:vimwiki_list = [{'path': '/mnt/c/Users/usrzar/Desktop/vimwiki.md', 'syntax': 'markdown', 'ext': '.md'}]
+
+"###############################################################################
+" Mapped hotkeys
 
 " Mapped leader hotkeys for file workflow efficiencies
 let mapleader="'"                       " Set map leader character to a comma
@@ -98,6 +87,7 @@ map <leader>sv :source ~/.vimrc<CR>		" This mapping is for sourcing the vimrc fi
 map <leader>w :w!<CR>	    	        " This mapping is for writing the file
 map <leader>q :q<CR>	    	        " This mapping is for exiting the file
 map <leader>qf :q!<CR>	    	        " This mapping is for force exiting the file
+map <leader>d :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<cr>   " Timestamp hotkey 
 
 " Mapped keys for window pane height/width adjustments
 map <leader>= <C-w>+		            " Increase height of current window pane
@@ -112,7 +102,7 @@ map <C-l> <C-w>l		        " Move to window pane to the right
 map <C-k> <C-w>k		        " Move to window pane above
 map <C-j> <C-w>j		        " Move to window pane below
 map <C-o> :NERDTreeToggle<CR>   " Open a NERDTree with Ctrl-O
-
+       
 " Mapped keys for code snippets
 map <leader>^ I<sup>*<ESC><Space><Space>$A*</sup><ESC><CR>      " This mapping is to add a superscript markdown snippet 
 
