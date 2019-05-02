@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Personal Function Definitions
 # Get top fifteen most run bash commands
 function bash_stat() {
