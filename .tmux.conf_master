@@ -1,10 +1,27 @@
 # remap prefeix from 'C-b' to 'C-p'
 unbind C-b
-set-option -g prefix C-p
-bind-key C-p send-prefix
+set-option -g prefix C-t
+bind-key C-t send-prefix
+
+# make delay shorter
+set -sg escapte-time 0
 
 # Start window numbering at 1
 set -g base-index 1
 
 # Set shell prompt colors
 set -g default-terminal "screen-256color"
+
+# reload config file
+bind r source-file ~/.tmux.conf \; display ".tmux.conf reloaded!" 
+
+# quickly open a new window
+bind N new-window
+
+# vim-like pane movements
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+
