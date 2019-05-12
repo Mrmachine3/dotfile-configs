@@ -1,0 +1,17 @@
+# Personal Alias Definitions
+alias desktop='cd /mnt/c/Users/atone/Desktop'
+alias Desktop='cd /mnt/c/Users/atone/Desktop'
+alias downloads='cd /mnt/c/Users/atone/Downloads'
+alias Downloads='cd /mnt/c/Users/atone/Downloads'
+alias ls='ls -lh --group-directories-first'
+alias lsa='ls -alh --group-directories-first'
+alias checkinstall='history | grep -i "install" | grep -v "help" | grep -v "grep" > envbuild.txt && cat ~/envbuild.txt*'
+alias dpu='cd /mnt/c/Users/usrzar/Desktop/DPU_CYBERSEC/; ls'
+alias DPU='cd /mnt/c/Users/usrzar/Desktop/DPU_CYBERSEC/; ls'
+alias course='cd /mnt/c/Users/atone/Desktop/github-repos/DPU_CYBERSEC/2019/SQ19_TDC405;ls'
+alias v='vim ~/vimwiki'
+ 
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
