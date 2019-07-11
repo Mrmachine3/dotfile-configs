@@ -24,7 +24,9 @@ alias grep='grep --color=auto'
 #alias -g S='| sort -u'
 #alias -g T='tail -f'
 #alias -g W='| wc -l'
+
 ###
+
 # Filesystem aliases
  alias all='ls -arlFhG'
  alias ..='cd ..; ls -al'
@@ -175,3 +177,24 @@ echo "window size: $(tput cols)x$(tput lines)"
  alias saver='cmatrix -Bsu 7'
  alias lotr='cat lotr.txt | espeak -s 115'
 
+# ping
+alias ping='ping -c 3'
+
+# task
+alias t='task'
+
+# sudo
+alias s='sudo '
+alias se='sudoedit'
+
+# systemd
+alias sctl='systemctl'
+alias jctl='journalctl'
+
+# docker
+alias dm='docker-machine'
+alias d='docker'
+alias dc='docker-compose'
+
+# ansible
+alias ap='ansible-playbook'
