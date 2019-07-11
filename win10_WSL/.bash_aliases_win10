@@ -1,17 +1,177 @@
 # Personal Alias Definitions
-alias desktop='cd /mnt/c/Users/atone/Desktop'
-alias Desktop='cd /mnt/c/Users/atone/Desktop'
-alias downloads='cd /mnt/c/Users/atone/Downloads'
-alias Downloads='cd /mnt/c/Users/atone/Downloads'
-alias ls='ls -lh --group-directories-first'
+alias desktop='cd $DESKTOP'
+alias Desktop='cd $DESKTOP'
+alias downloads='cd $DOWNLOADS'
+alias Downloads='cd $DOWNLOADS'
+alias dpu='cd $DESKTOP/github-repos/DPU_CYBERSEC/; ls'
+alias DPU='cd $DESKTOP/github-repos/DPU_CYBERSEC/; ls'
+alias course='cd $DESKTOP/github-repos/DPU_CYBERSEC/2019/SQ19_TDC405;ls'
 alias lsa='ls -alh --group-directories-first'
-alias checkinstall='history | grep -i "install" | grep -v "help" | grep -v "grep" > envbuild.txt && cat ~/envbuild.txt*'
-alias dpu='cd /mnt/c/Users/usrzar/Desktop/DPU_CYBERSEC/; ls'
-alias DPU='cd /mnt/c/Users/usrzar/Desktop/DPU_CYBERSEC/; ls'
-alias course='cd /mnt/c/Users/atone/Desktop/github-repos/DPU_CYBERSEC/2019/SQ19_TDC405;ls'
-alias v='vim ~/vimwiki'
+#alias ls='ls -lh --group-directories-first'
+alias ls='ls -lh --group-directories-first'
+
+# Git Aliases
+alias git-up="git branch | sed -n -e 's/^\* \(.*\)/\1/p' | xargs git push -u origin "
+
+# Grep
+alias grep='grep --color=auto'
+
+# Pipe aliases
+#alias -g G='| grep'
+#alias -g L='| less'
+#alias -g NE='2> /dev/null'
+#alias -g NUL='> /dev/null 2>&1'
+#alias -g S='| sort -u'
+#alias -g T='tail -f'
+#alias -g W='| wc -l'
+###
+# Filesystem aliases
+ alias all='ls -arlFhG'
+ alias ..='cd ..; ls -al'
+ alias cd..='cd ..'
+ alias ...='cd ..; cd ..; ls -al'
+ alias ls='ls -l'
+ alias lsa='ls -al'
+ alias lsad='ls -lh | grep "^d" && ls -lh | grep -v "^d"'
+ alias hs='history| grep -i'
+ alias now='date +"%T"'
+
+# Project shortcut aliases
+ alias desk='cd; cd ~/Desktop; lsa'
+ alias blog='cd; cd ~/Desktop/JEKYLL/mrmachine3.github.io; lsa'
+ alias seccam='cd; cd ~/Desktop/PROJECTS/RPiSec_Cam; lsa'
+ alias elk='cd; cd ~/Desktop/PROJECTS/4RPi_ELKstack; lsa'
+ alias note='cd; cd ~/Desktop/PROJECTS/jupyter_work; lsa' 
+ alias dpu='cd; cd ~/Desktop/SCHOOL/DPU_CYBERSEC; tree' 
+ alias study='cd; cd ~/Desktop/SCHOOL; lsa' 
+ alias course='cd; cd ~/Desktop/SCHOOL/DPU_CYBERSEC/2019/WQ19_TDC411; lsa'
+ alias testdir='cd; cd ~/Desktop/test_dir; lsa' 
+
+# File management aliases
+ alias rmdir='sudo rm -rv '
+ alias tree='tree -IC ".*"' # Display tree structure of directories excluding hidden directories
+
+# Filesystem confirmation aliases
+ alias mv='mv -i'
+ alias cp='cp -i'
+ alias rm='rm -i'
+#alias find='grep -rnw './' -e '$1''
+
+#Command line head/tail shortcuts
+ alias -g H='| head'
+ alias -g T='| tail'
+ alias -g G='| grep'
  
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+# Git aliases
+ alias gs='git status'
+ alias ga='git add'
+ alias gp='git pull'
+ alias gc='git commit -m'
+ alias gsh='git push'
+ alias gch='git checkout'
+ alias gbr='git branch'
+
+# Web-search aliases
+ alias google='web_search google'
+ alias gmail='web_search google gmail'
+ alias youtube='web_search google youtube'
+ alias github='web_search github'
+
+# Directory cloning aliases
+
+# OMZ plugin aliases
+ alias tmux='tmux -2'
+ alias ta='tmux attach -t'
+ alias tad='tmux attach -d -t'
+ alias ts='tmux new-session -s'
+ alias tl='tmux list-sessions'
+ alias tksv='tmux kill-server'
+ alias tkss='tmux kill-session -t'
+
+# Markdown conversion and PDF maker aliases
+ alias makepdf='echo "	pandoc <file1>.* -t beamer -o <file1>.pdf"'
+ alias view='pandoc $1 | lynx -stdin'
+ alias open='xdg-open $1'
+
+# Custom Alias help function
+function aliashelp {
+    aliashelp="
+    google		web_search google
+    youtube		web_search google youtube
+    makepdf		pandoc <file1>.* -t beamer -o <file1>.pdf
+    open		xdg-open <filename>.pdf
+    dim			# prints current terminal window dimensions
+    goals		# print career goals
+    quote		# print random quotes
+    hello 		# prints custom ascii art
+    saver		# Matrix style screensaver"
+    
+    # Print array
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo " " && printf '%s\n' "$aliashelp" | fold -s && echo " "
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
+
+## Display goals
+goals () {
+    echo -e "SHORT-TERM GOALS \n\tComplete DataCamp's Data Science with Python Career Track\n\tTransition to minimalist Arch Linux OS\n\vCAREER GOALS \n\tMaster python programming language\n\tMaster bash scripting\n\tAdvance infrastructure deployment automation/administration skills\n\tAdvance security analysis skills\n\tAdvance technical report writing skills\n\tBlog about cybersecurity topics\n\vCERTIFICATION GOALS \n\tComptia A+\n\tComptia Network+\n\tComptia Security+\n\tComptia CySA+\n\tComptia PenTest+\n\tComptia CASP\n\tCISSP*\n\tOSCP*\n\vTOOLS \n\tElasticsearch, Logstash, Kibana/Splunk\n\tSnort, Bro/Suricata\n\tAnsible, Chef/Puppet\n\tLaTeX/ViM/Jupyter Notebooks\n\tArch Linux OS distribution (Daily development workstation)\n\tKali Linux OS distribution (Analysis workstation)" | fold -s
+    }
+
+quote() {
+    # Display random quote upon logging onto terminal
+    MSGS=(
+    "Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
+    "If you're going through hell, keep going. ― Winston Churchill"
+    "Never, never, never give up. ― Winston Churchill"
+    "Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
+    "Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+    "UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
+    "You haven't come this far, to only come this far"
+    "Explain better with twice as much thought, but half as much content"
+    "If you don't fight for what you want, don't cry for what you lose"
+    "If your actions inspire others to dream more, learn more, do more, become more, then you are a leader"
+    "Leaders do daily what others do occasionally"
+    "Knowledge is being aware of what you can do. Wisdom is knowing when NOT to do it"
+    "Whether you think you can or you think you can't, you're right"
+    "Be happy with what you have, while you work for what you want"
+    "When you know what you want, and you want it bad enough...you'll find a way to get it"
+    "It doesn't matter how slow you go, as long as you don't stop"
+    "Failure is the opportunity to begin again more intelligently"
+    "Succss is not final. Failure is not fatal. It is the courage to continue that counts ― Winston Churchill"
+    "Hardships prepare ordinary people for extraordinary things ― C.S Lewis"
+    "Not until we are lost do we being to understand ourselves"
+    "Discipline has within it the potential for creating future miracles"
+    "If it is important, you will find a way; if not, you will find an excuse"
+    "Everything worthwhile costs time"
+    "RULE #1: Never tell everything you know"
+    "Plans without execution are just dreams"
+    "What's right is what's left after you've done everything else wrong"
+    "Success is stumbling from failure to failure without the loss of enthusiasm"
+    "The more you concern yourself with the path of another...the farther you stray from your own."
+    "It's not about what you walk away from, it's about what you walk away with"
+    )
+    
+    MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
+    
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
+
+function dim {
+echo "window size: $(tput cols)x$(tput lines)"
+    }
+
+#Jekyll Aliases
+ alias bundleup='bundle update; bundle install'
+ alias jserve='bundleup; jekyll serve --watch'
+ alias jdraft='bundleup; jekyll serve --draft'
+ alias jbuild='jekyll clean; jekyll build'
+ alias jdoc='jekyll doctor; jekyll clean; jserve'
+
+# Custom function aliases
+ alias aliashelp='aliashelp'
+ alias hello='hello'
+ alias saver='cmatrix -Bsu 7'
+ alias lotr='cat lotr.txt | espeak -s 115'
+
