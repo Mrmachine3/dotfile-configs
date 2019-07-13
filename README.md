@@ -13,27 +13,10 @@ The setup script will perform the following actions:
 + Perform basic host security hardening routines
     
 #### To Do List
-+ Develop a bash script to export global variables and print confirmations to stdout and log file
-  - Sample script to export global variables
-    ```
-    #!/bin/bash
-    DESKTOP="$HOME/Desktop"
-    DOWNLOADS="$HOME/Downloads"
-    REPOS="$HOME/Desktop/github-repos"
-
-    global_envpaths = ['DESKTOP','DOWNLOADS','REPOS']
-
-    echo "Exporting global variables..."
-
-    for i in global_envpaths
-        echo "Moving into $i directory..."
-        cd $i
-        export $i=$(pwd)
-        echo "Exported environment variable"
-        printenv | grep -i "$i" >> $DESKTOP/setuplog.log
-    
-    echo "Global environmental variables exported..."
-    ```
++ Develop script to export env variables
+  - See envexport.sh file
+    - [ ] Implement a logging feature to show time stamps for each variable export
+    - [ ] Try sed/awk on $CONFIG file before appending exports to file
 + Develop a git repo cloner that clones key setup repos
 + Develop a bash script to symlink key config files
 + Develop a bash script to test to simulate functionality of config files and to log output
