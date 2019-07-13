@@ -21,14 +21,16 @@ The setup script will perform the following actions:
     DOWNLOADS="$HOME/Downloads"
     REPOS="$HOME/Desktop/github-repos"
 
+    global_envpaths = ['DESKTOP','DOWNLOADS','REPOS']
+
     echo "Exporting global variables..."
 
-    for i in DESKTOP DOWNLOADS REPOS
+    for i in global_envpaths
         echo "Moving into $i directory..."
         cd $i
         export $i=$(pwd)
         echo "Exported environment variable"
-        printenv | grep -i "$i" >> setuplog.log
+        printenv | grep -i "$i" >> $DESKTOP/setuplog.log
     
     echo "Global environmental variables exported..."
     ```
