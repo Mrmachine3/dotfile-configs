@@ -13,20 +13,58 @@ The setup script will perform the following actions:
 + Perform basic host security hardening routines
     
 #### To Do List
-+ Develop script to export env variables
-  - See envexport.sh file
-    - [ ] Implement a logging feature to show time stamps for each variable export
++ [x] Develop script to export env variables; see envexport.sh
+    - [x] Implement a logging feature to show time stamps for each variable export
     - [ ] Try sed/awk on $CONFIG file before appending exports to file
-+ Develop a git repo cloner that clones key setup repos
-+ Develop a bash script to symlink key config files
-+ Develop a bash script to test to simulate functionality of config files and to log output
-+ Develop a bash script to clone script libraries
-  - Steps to clone scripts library
-    1. Develop all scripts and commit to remote gh repo
-    2. Run a repo sync script that will copy/replace remote gh script repo to /usr/local/bin
-    3. Run a ```chown -v ``` script on all scripts in usr/local/bin directory
++ [ ] Develop a bash script to update, upgrade and install key packages
+    - [ ] Try reading in a separate key value pair file, i.e. package and description
+    - [ ] Remove uneccessary, old packages
+    - [ ] Echo package names to stdout once successfully installed
+    - [ ] Log unsuccessful package installations
++ [ ] Develop a bash script to clone github repos
+    - [ ] Try reading in a separate key value pair file, i.e. github repo name and URL
++ [ ] Develop a bash script to rsync dotfile and custom script repos
+    -  Develop all scripts and commit to remote gh repo
     4. Run a periodic rsync command or a cron job to since remote directory to /usr/local/bin
-+ Develop a bash script to perform basic host security hardening audit
+    - [ ] Try the following command:
+        ```
+        LOCALSCRIPTS=/usr/local/bin
+
+        rsync -a <path/to/github/dotfile-config>/ $HOME
+        rsync -a <path/to/github/scripts>/ $LOCALSCRIPTS
+        
+        cd $LOCALSCRIPTS && if [ $(pwd) ="/usr/local/bin" ]; then echo "Current directory: 'pwd'" fi
+        for $i in $LOCALSCRIPTS
+            if [ 'ls -l $i | cut -d " " -f 3' != "$USER" ];
+            then
+                do 
+                    chown -v $USER $i 
+                    echo "File ownership changed to $USER for $i..."
+                done
+            fi
+        echo "'ls | grep -i $USER | wc -l' files modified to reflect new owner..."
+        ```
++ [ ] Develop a bash script to symlink key config files
+        ```
+        #!/bin/bash
+        CONFIGS=$(ls -al .*)
+        DOTFILES=dotfile-config
+        if [ -d dotfile-config ]
+            for $i in $CONFIGS;
+            do
+                echo "Symlinking $i within $HOME..."
+            done
+        else
+            echo "${DOTFILES##*/} repo doesn't exist..."
+            echo "Execute gitcloner script to clone the ${DOTFILES##*/} repo..."
+            exit 1
+        ```
++ [ ] Develop a bash script to test to simulate functionality of config files and to log output
++ [ ] Develop a bash script to perform basic host security hardening audit
++ [ ] Develop a bash script that sets all custom path aliases
++ [ ] Develop a bash script to backup all work and configs
+    - [ ] For each github repo, check status; if dirty branch, add, commit, push
+    - [ ] Schedule cron job to execute backup of github work
   
 ################################################################################
 
