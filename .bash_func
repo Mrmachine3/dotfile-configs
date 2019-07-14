@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Personal Function Definitions
 # Get top fifteen most run bash commands
 function bash_stat() {
@@ -139,7 +137,3 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-
-############################################################
-# style helpers
-############################################################
