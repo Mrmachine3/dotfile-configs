@@ -4,15 +4,19 @@ ZZ="1"
 
 GETLIST=$(ls $CONFIG)
 
+get_hash () {
 echo -e "Listing configuration files for file integrity checking...\n"
-
-for i in $GETLIST; do
     if [ ! -d "$i" ]
     then
-    md5deep -k $i -W fimList.txt
+    md5deep -k $i >> fimList.txt
     fi
-done
+    sleep $ZZ 
+    cat fimList.txt
+}
 
-sleep $ZZ
+for i in $GETLIST; do get_hash done
 
-cat fimList.txt
+check_hash () {
+echo -e "Listing configuration files for file integrity checking...\n"
+# if fimList file exists, read line by line and check newly generated hash value to saved hash value
+}
