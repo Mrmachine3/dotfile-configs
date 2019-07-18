@@ -18,7 +18,7 @@ The setup script will perform the following actions:
     - [ ] Try sed/awk on $CONFIG file before appending exports to file
 + [ ] Develop a bash script to update, upgrade and install key packages
     - [ ] Try reading in a separate key value pair file, i.e. package and description
-    - [ ] Remove uneccessary, old packages
+    - [ ] Remove unnecessary, old packages
     - [ ] Echo package names to stdout once successfully installed
     - [ ] Log unsuccessful package installations
 + [ ] Develop a bash script to clone github repos
