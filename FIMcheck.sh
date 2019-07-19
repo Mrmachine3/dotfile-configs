@@ -5,9 +5,10 @@ ZZ="1"
 GETLIST=$(ls $CONFIG)
 
 get_hash () {
-echo -e "Listing configuration files for file integrity checking...\n"
+echo -e "Listing configuration files for hash generation...\n"
     if [ ! -d "$i" ]
     then
+    echo -e "MD5 FILE HASHES"
     md5deep -k $i >> fimList.txt
     fi
     sleep $ZZ 
