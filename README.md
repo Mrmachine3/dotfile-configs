@@ -60,11 +60,12 @@ The setup script will perform the following actions:
             exit 1
         ```
 + [ ] Develop a bash script to test to simulate functionality of config files and to log output
-+ [ ] Develop a bash script to perform basic host security hardening audit
 + [ ] Develop a bash script that sets all custom path aliases
 + [ ] Develop a bash script to backup all work and configs
     - [ ] For each github repo, check status; if dirty branch, add, commit, push
     - [ ] Schedule cron job to execute backup of github work
++ [ ] Develop a bash script to generate configuration file md5 hashes for FIM validation
++ [ ] Develop a bash script to perform basic host security hardening audit
   
 ################################################################################
 

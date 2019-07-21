@@ -9,9 +9,9 @@
   remote_user: root
   gather_facts: false
   vars:
-    create_user: jarvis
+    create_user: mrmachine
     copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
-    sys_packages: [ 'curl', 'vim', 'git', 'ufw', 'wget'] 
+    sys_packages: [ 'curl', 'vim', 'git', 'ufw', 'wget', 'tmux' ] 
 
   tasks:
     - name: Make sure we have a 'wheel' group
