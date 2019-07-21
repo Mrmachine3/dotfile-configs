@@ -8,7 +8,8 @@ alias downloads='cd $DOWNLOADS; ls -l'
 alias wiki='cd $GITHUB_REPOS/DPU_CYBERSEC/DPU_CYBERSEC.wiki; ls -l'
 alias dpu='cd $GITHUB_REPOS/DPU_CYBERSEC; ls -l'
 alias course='cd $github_repos/DPU_CYBERSEC/2019/SQ19_TDC405; ls -l'
-alias conf='cd $GITHUB_REPOS/dotfile-configs; ls -al; sleep 4; read -p "Edit conf file: " DOTFILE; ${=EDITOR} $DOTFILE'
+alias conf='cd $GITHUB_REPOS/dotfile-configs; ls -al'
+#alias conf='cd $GITHUB_REPOS/dotfile-configs; ls -al; sleep 4; read -p "Edit conf file: " DOTFILE; ${=EDITOR} $DOTFILE'
 
 # Filesystem aliases
 alias all='ls -arlFhG'
