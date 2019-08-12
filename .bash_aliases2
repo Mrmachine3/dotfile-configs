@@ -1,0 +1,47 @@
+# SET PERSONAL ALIASES
+# Fun aliases
+alias saver='cmatrix -Bsu 7'
+
+# Directory navigation aliases
+alias tree='tree -IC ".*"' # Display tree structure of directories 
+alias desktop='cd $DESKTOP'
+alias downloads='cd $DOWNLOADS'
+alias dpu='cd $DESKTOP/DPU_CYBERSEC/; ls'
+alias course='cd $GITHUB_REPOS/DPU_CYBERSEC/2019/SQ19_TDC405;ls'
+alias config='${=EDITOR} $GITHUB_REPOS/dotfile-config/'
+ 
+# Filesystem aliases
+alias .='ls -al'
+alias ..='cd ..; ls -al'
+alias ...='cd ..; cd ..; ls -al'
+alias ls='ls -lh --group-directories-first'
+alias lsa='ls -alh --group-directories-first'
+alias all='ls -arlFhG'
+alias ls='ls -l'
+alias now='date +"%m-%d-%Y %T"'
+
+# Confirmation aliases
+ alias mv='mv -i'
+ alias cp='cp -i'
+ alias rm='rm -i'
+ 
+# GIT aliases
+ alias gs='git status'
+ alias ga='git add'
+ alias gc='git commit'
+ alias gcm='git commit -m'
+ alias gsh='git push'
+ alias gp='git pull'
+ alias gch='git checkout $1'
+ alias gbr='git branch $1'
+ alias gnb='git checkout -b $1'
+
+# TMUX aliases
+alias tmux='tmux -2'
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
+ 
