@@ -40,11 +40,20 @@ apt-get install texlive-full zathura zathura-pdf-mupdf
 apt-get install wireshark tshark
 ```
 
+- Install [Termdown](https://github.com/Mrmachine3/termdown)
+```python
+pip install termdown
+```
+```bash
+termdown -b -B -s 45m
+```
+
 - Custom workspaces for i3
   - web: web browser workspace
   - mail client: two asymmetrical horizontally split windows with gmail client (top-narrow) and gmail calendar (bottom-wide) 
   - media: web browser opened to spotify, youtube, or youtube TV (youtube TV can "pop out" into a small floating window that can be moved to the main workspace
-  - writing: a persistent tmux session within a repo that launches a left pane editor, right pane PDF viewer, bottom spanning LaTeX compiler window
-  - development: All persistent tmux sessions by project using tmuxinator config files stored in repo folders
+  - writing: a persistent tmux session within a repo that launches a left pane editor, right pane PDF viewer, bottom spanning LaTeX compiler window and a small countdown timer [(Termdown)](https://github.com/Mrmachine3/termdown)
+  - development: All persistent tmux sessions by project using tmuxinator config files stored in repo folders and a small countdown timer [(Termdown)](https://github.com/Mrmachine3/termdown)
+
   - wireshark: automatic launch of wireshark application and filter cheat sheat
 
