@@ -1,0 +1,20 @@
+#!/bin/bash
+n=$1
+
+# Work Time Pomodoro timer
+#seconds=$(( 60 * $N); date1=$((`date +%s` + $seconds)); 
+#while [ "$date1" -ge `date +%s` ]; do 
+#  echo -ne "$(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r"; 
+#done
+#
+#while [ $date1 = "00:00:00" ]; do
+#    echo "Break Time!"
+
+# Break Time Pomodoro timer
+seconds=$(($((60*$N))/3)); date2=$((`date +%s` + $seconds)); 
+while [ "$date2" -ge `date +%s` ]; do 
+  echo -ne "$(date -u --date @$(($date2 - `date +%s` )) +%H:%M:%S)\r"; 
+done
+
+while [ $date2 = "00:00:00" ]; do
+    echo "Pomodoro complete!"
