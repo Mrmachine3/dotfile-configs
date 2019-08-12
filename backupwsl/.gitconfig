@@ -1,7 +1,0 @@
-[user]
-	email = atone36@gmail.com
-	name = Anthony Rodriguez
-[include]
-	path = /home/mrmachine3/gitalias.txt
-[credential]
-	helper = cache --timeout 7200

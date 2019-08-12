@@ -1,7 +1,0 @@
-# Functions
-
-function newdir {
-    mkdir ./$1
-    sleep .5
-    cd ./$1
-    }
