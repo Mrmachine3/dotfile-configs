@@ -10,14 +10,14 @@ This document is intended to outline the various features of a base Kali Linux i
 2. Ensure additional software installed on this OS is functional and will not compromise the operating effectiveness of the core packages.
 3. Ensure that any build automation scripts are properly documented to provide instructional comments to users of this repository.
 
-## Requirements
+## Core Functional Requirements
 In order to build a light-weight, responsive Kali Linux image I intend to meet the following requirements, or provide supporting resources to suggest alternatives:
 - primarily mouse-less desktop experience relying on vi-like keybindings for managing desktop workspaces
   - NOTE: The mouse and/or laptop trackpad are not intended to be completely disabled
 - i3 windows manager: a tiling windows manager designed for X window system, specifically X11 communication protocol
 - Xfce desktop environment: a lightweight desktop environment for UNIX-like operating systems that is fast and has a low impact on system resources.
 - Vim text editor: a highly customizable and extensible command line text editor that is suited for touch typists, software programmers, system administrators featuring customizable key bindings, macros, and vimscript code snippets intended for task and keystroke automation.
-- tmux: 
+- tmux: is a terminal multiplexer for Unix-like operating systems that allows multiple terminal sessions to be accessed simultaneously in a single window, which useful for running multiple command-line program.
 
 # Steps
 - [Download Kali Linux Light 64-Bit base image](https://cdimage.kali.org/kali-2019.2/kali-linux-light-2019.2-amd64.iso)
