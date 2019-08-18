@@ -19,6 +19,18 @@ In order to build a light-weight, responsive Kali Linux image I intend to meet t
 - Vim text editor: a highly customizable and extensible command line text editor that is suited for touch typists, software programmers, system administrators featuring customizable key bindings, macros, and vimscript code snippets intended for task and keystroke automation.
 - tmux: is a terminal multiplexer for Unix-like operating systems that allows multiple terminal sessions to be accessed simultaneously in a single window, which useful for running multiple command-line program.
 
+## Configuration setup
+- [ ] [Separate files to organize i3's main configuration file](https://github.com/Mrmachine3/dotfiles-legacy/tree/master/tag-i3/i3/config.d)
+  - [ ] vars.conf - set i3 variables, workspace labels, mod keys
+  - [ ] base.conf - basic settings, gap sizes
+  - [ ] colors.conf - color schemes for terminal, status bars, text, backgrounds, etc.
+  - [ ] [menus.conf](https://github.com/Mrmachine3/dotfiles-legacy/blob/master/tag-i3/i3/config.d/menus.conf) - key-bound menu to initialize startup apps, [monitor arrangement scripts](https://github.com/Mrmachine3/dotfiles-legacy/tree/master/tag-i3/screenlayout), and power down modes
+  - [ ] [workspaces.conf](https://github.com/Mrmachine3/dotfiles-legacy/blob/master/tag-i3/i3/config.d/workspaces.conf) - container navigation, workspace layouts, screen splits
+  - [ ] xf86.conf - 
+  - [ ] 
+- [ ] [Dunst configuration for desktop alerts](https://github.com/Mrmachine3/dotfiles-legacy/blob/master/tag-i3/config/dunstrc)
+- [ ] [tmux configurations](https://github.com/Mrmachine3/dotfiles-legacy/blob/master/tag-tmux/tmux.conf)
+
 # Steps
 - [Download Kali Linux Light 64-Bit base image](https://cdimage.kali.org/kali-2019.2/kali-linux-light-2019.2-amd64.iso)
 
