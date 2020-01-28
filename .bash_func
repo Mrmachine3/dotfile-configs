@@ -1,13 +1,114 @@
-#!/bin/bash
+# PERSONAL FUNCTION DEFINITIONS
+# Custom greeting at Terminal
+greetings () {
+    cat <<"EOF"
 
-# Personal Function Definitions
+ _       __     __                        
+| |     / /__  / /________  ____ ___  ___ 
+| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \
+| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/
+|__/|__/\___/_/\___/\____/_/ /_/ /_/\___/ 
+                                          
+    __  ___          __  ___           __    _          
+   /  |/  /____     /  |/  /___ ______/ /_  (_)___  ___ 
+  / /|_/ / ___/    / /|_/ / __ `/ ___/ __ \/ / __ \/ _ \
+ / /  / / /  _    / /  / / /_/ / /__/ / / / / / / /  __/
+/_/  /_/_/  (_)  /_/  /_/\__,_/\___/_/ /_/_/_/ /_/\___/ 
+      
+EOF
+    echo -e "${RED}You are logged on:${RESET}" ; hostname
+    echo -e "\n${RED}Additionnal information:${RESET}" ; uname -a
+    echo -e "\n${RED}Current date/time:${RESET} " ; now
+    echo -e "\n${RED}Machine stats:${RESET}" ; uptime
+    echo -e "\n${RED}Memory stats:${RESET}" ; free
+    echo -e "\n${RED}Disk stats:${RESET}" ; df -kh
+    my_ip 2>&- ;
+    echo -e "\n${RED}Local IP Address:${RESET}" ; echo ${MY_IP:-"Not connected"}
+    echo -e "\n${YELLOW}Users logged on:${RESET}" ; w -h
+    }
+
+## Display goals
+goals () {
+    echo -e "SHORT-TERM GOALS"
+    echo -e "\tComplete NetAcad's CCNA Cyber Ops Certification Study Course"
+    echo -e "\tComplete DataCamp's Data Science with Python Career Track"
+    echo -e "\vCAREER GOALS"
+    echo -e "\tMaster python programming language"
+    echo -e "\tMaster bash scripting"
+    echo -e "\tAdvance infrastructure deployment automation/administration skills"
+    echo -e "\tAdvance security analysis skills"
+    echo -e "\tAdvance technical report writing skills"
+    echo -e "\vCERTIFICATION GOALS"
+    echo -e "\tCCNA Cyber Ops"
+    echo -e "\tCCNP Security"
+    echo -e "\tOSCP*"
+    echo -e "\vTOOLS"
+    echo -e "\tElasticsearch, Logstash, Kibana/Splunk"
+    echo -e "\tSnort, Zeek, Suricata"
+    echo -e "\tAnsible, Chef, Puppet"
+    echo -e "\tLaTeX, ViM, Jupyter Notebooks"
+    echo -e "\tWindows 10 WSL (Daily development workstation)"
+    echo -e "\tUbuntu Linux OS distribution (Analysis workstation)"
+    }
+
+quote () {
+    # Display random quote upon logging onto terminal
+    MSGS=(
+    "Never give up on something that you can't go a day without thinking about. ― Winston Churchill"
+    "If you're going through hell, keep going. ― Winston Churchill"
+    "Never, never, never give up. ― Winston Churchill"
+    "Never give in--never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honor and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy. ― Winston Churchill"
+    "Success is the ability to go from one failure to another with no loss of enthusiasm. ― Winston Churchill"
+    "UNIX is simple. It just takes a genius to understand its simplicity. - Dennis Ritchie"
+    "You haven't come this far, to only come this far"
+    "Explain better with twice as much thought, but half as much content"
+    "If you don't fight for what you want, don't cry for what you lose"
+    "If your actions inspire others to dream more, learn more, do more, become more, then you are a leader"
+    "Leaders do daily what others do occasionally"
+    "Knowledge is being aware of what you can do. Wisdom is knowing when NOT to do it"
+    "Whether you think you can or you think you can't, you're right"
+    "Be happy with what you have, while you work for what you want"
+    "When you know what you want, and you want it bad enough...you'll find a way to get it"
+    "It doesn't matter how slow you go, as long as you don't stop"
+    "Failure is the opportunity to begin again more intelligently"
+    "Succss is not final. Failure is not fatal. It is the courage to continue that counts ― Winston Churchill"
+    "Hardships prepare ordinary people for extraordinary things ― C.S Lewis"
+    "Not until we are lost do we being to understand ourselves"
+    "Discipline has within it the potential for creating future miracles"
+    "If it is important, you will find a way; if not, you will find an excuse"
+    "Everything worthwhile costs time"
+    "RULE #1: Never tell everything you know"
+    "Plans without execution are just dreams"
+    "What's right is what's left after you've done everything else wrong"
+    "Success is stumbling from failure to failure without the loss of enthusiasm"
+    "The more you concern yourself with the path of another...the farther you stray from your own."
+    "It's not about what you walk away from, it's about what you walk away with"
+    )
+    
+    MSG=${MSGS[$RANDOM % ${#MSGS[@]} ]}
+    
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    echo " " && printf '%s\n' "$MSG" | fold -s && echo " "
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+    }
+
+# Display current window dimensions
+dim () {
+    echo "window size: $(tput cols)x$(tput lines)"
+    }
+
+# Make directory and move into them
+newdir () {
+    mkdir -p $1 && cd $1
+    }
+
 # Get top fifteen most run bash commands
-function bash_stat() {
+bash_stat () {
 cut -f1 -d" " $HOME/.bash_history | sort | uniq -c | sort -nr | head -n 15
 }
 
 # Handy Extract Program
-function extract() {
+extract() {
   if [ -f $1 ] ; then
     case $1 in
     *.tar.bz2)  tarxvjf $1  ;;
@@ -52,46 +153,22 @@ function no_spaces() {
   done
 }
 
-# Make directory and move into it
-function mkcd() {
-  mkdir -p $1 && cd $1
-}
+colortest () {
+    echo "${BLACK} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${RED} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${GREEN} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${YELLOW} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${BLUE} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${PURPLE} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${CYAN} TEST test ${TXTBLD} TEST test ${RESET}"
+    echo "${WHITE} TEST test ${TXTBLD} TEST test ${RESET}"
+    }
 
-# Get current host related info
-#function hi() {
-#  echo -e "${RED}You are logged on:${RESET}" ; hostname
-#  echo -e "\n${RED}Additionnal information:${RESET}" ; uname -a
-#  echo -e "\n${RED}Current date:${RESET} " ; date
-#  echo -e "\n${RED}Machine stats:${RESET}" ; uptime
-#  echo -e "\n${RED}Memory stats:${RESET}" ; free
-#  echo -e "\n${RED}Disk stats:${RESET}" ; df -kh
-#  my_ip 2>&- ;
-#  echo -e "\n${RED}Local IP Address:${RESET}" ; echo ${MY_IP:-"Not connected"}
-#  echo -e "\n${YELLOW}Users logged on:${RESET}" ; w -h
-#}
-
-#function colortest() {
-#  echo "${BLACK} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${RED} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${GREEN} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${YELLOW} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${BLUE} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${PURPLE} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${CYAN} TEST test ${TXTBLD} TEST test ${RESET}"
-#  echo "${WHITE} TEST test ${TXTBLD} TEST test ${RESET}"
-#}
-
-function colortest2() {
-  for i in {0..255} ; do
+colortest2 () {
+    for i in {0..255} ; do
     printf "\x1b[38;5;${i}mcolour${i}\n"
-  done
-}
-
-#function ssht () {
-# [[ $1 =~ ^(1|2|3)$ ]] || { echo 'Not a valid last octet value !!' && return ;}
-# ip=123.123.123.$1
-# ssh my_user@"$ip" -p 12345
-#}
+    done
+    }
 
 # get current branch in git repo
 function parse_git_branch() {
@@ -139,7 +216,3 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-
-############################################################
-# style helpers
-############################################################

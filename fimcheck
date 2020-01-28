@@ -1,0 +1,21 @@
+#/!/bin/bash
+# Define your configuration file repo
+CONFIG='/mnt/c/Users/atone/Desktop/github_repos/dotfile-configs/'
+ZZ="1"
+
+GETLIST=$(ls $CONFIG)
+
+echo -e "Listing configuration files for hash generation...\n"
+for i in $GETLIST
+do
+    if [ ! -d "$i" ] then
+        echo -e "Generating MD5 file hash for $i..."
+        md5deep -k $i >> /tmp/fimList.txt
+        sleep $ZZ 
+        cat /tmp/fimList.txt
+done
+
+#check_hash () {
+#echo -e "Listing configuration files for file integrity checking...\n"
+## if fimList file exists, read line by line and check newly generated hash value to saved hash value
+#}
