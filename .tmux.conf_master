@@ -1,10 +1,10 @@
 # remap prefeix from 'C-b' to 'C-p'
 unbind C-b
-set-option -g prefix C-t
-bind-key C-t send-prefix
+set-option -g prefix C-Space
+bind-key C-Space send-prefix
 
 # make delay shorter
-set -sg escapte-time 0
+set -sg escape-time 0
 
 # Start window numbering at 1
 set -g base-index 1
