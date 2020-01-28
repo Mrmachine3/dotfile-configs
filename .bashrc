@@ -72,11 +72,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
+
+# Alias definitions.
 # Bash Alias file tests
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Function definitions.
 # Bash Function file tests
 if [ -f ~/.bash_func ]; then
     . ~/.bash_func
@@ -95,3 +98,4 @@ fi
 
 export VISUAL=vim
 export EDITOR=$VISUAL
+################################################################################
