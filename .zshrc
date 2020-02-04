@@ -3,7 +3,7 @@
 export PATH=/usr/local/share/python:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/anthonymrodriguez/.oh-my-zsh"
+export ZSH="/Users/Mrmachine3/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -62,12 +62,6 @@ export UPDATE_ZSH_DAYS=7
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  docker
-  battery
-  iterm2
-)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,9 +91,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # zshrc configuration aliases
- alias zshconfig='atom ~/.zshrc'
+ alias zshconfig='vim ~/.zshrc'
  alias zshrc='${=EDITOR} ~/.zshrc'
- alias ohmyzsh='atom ~/.oh-my-zsh'
  alias .zsh='source ~/.zshrc'
 
 # Filesystem aliases
@@ -136,8 +129,3 @@ source $ZSH/oh-my-zsh.sh
  alias dcpull='docker-compose pull'
  alias dcstart='docker-compose start'
 
-# Python venv aliases
- alias pyfind='find . -name "*.py"'
- alias deact='deactivate'
- alias act27='source vpy27/bin/activate'
- alias act36='source vpy36/bin/activate'
