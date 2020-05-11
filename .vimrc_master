@@ -1,5 +1,5 @@
 "###############################################################################
-                                " Runtime Configurations
+"                               Runtime Configurations
 "###############################################################################
 
 set nocompatible   		        " be improved, REQUIRED
@@ -33,7 +33,7 @@ filetype plugin indent on        " REQUIRED
 ":PluginClean                   - Confirms removal of unused plugins; append '!' to auto-approve removal
 " To initiate, launch vim and run :PluginInstall
 "###############################################################################
-                                " ViM Variables
+"                                ViM Variables
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:lightline = {
@@ -76,11 +76,10 @@ au BufWinEnter * silent loadview
 
 "###############################################################################
                                " Vimwiki configuration
-let g:vimwiki_list = [{'path': '/mnt/c/Users/usrzar/Desktop/vimwiki.md', 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_list = [{'path': '/mnt/c/Users/usrzar/Desktop/vimwiki.md', 'syntax': 'markdown', 'ext': '.md'}]
 
 "###############################################################################
 " Mapped hotkeys
-
 " Mapped leader hotkeys for file workflow efficiencies
 let mapleader="'"                       " Set map leader character to a comma
 map <leader>sv :source ~/.vimrc<CR>		" This mapping is for sourcing the vimrc file
@@ -103,18 +102,6 @@ map <C-k> <C-w>k		        " Move to window pane above
 map <C-j> <C-w>j		        " Move to window pane below
 map <C-o> :NERDTreeToggle<CR>   " Open a NERDTree with Ctrl-O
        
-" Mapped keys for code snippets
-map <leader>^ I<sup>*<ESC><Space><Space>$A*</sup><ESC><CR>      " This mapping is to add a superscript markdown snippet 
-
-" Mapped keys for blog image tags 
-map <F2>  i<CR><figure<Space>class="center"><CR><a<Space>href="(image<Space>address)"><img<Space>alt="Image<Space>Name"<Space>src"(image<Space>address)"<Space>style="width:600px;heigh:200px;"></a><CR><figcaption>Image<Space>by<a<Space>href="(URL)"><strong> </strong></a></figcaption><CR></figure><CR><CR>
-
-" Mapped keys for a new to do list item
-map <F3> i*<Space><Space>[<Space>]<Space>
-
-" Mapped keys for a completed to do list item
-map <F4> 06xi*<Space><Space>[x]<Space>
-
 " Mapped keys for a python script template header 
 map <F5> i#!/usr/bin/env<Space>python<CR><CR>#<Space>Script<Space>Name:<Space><CR>#<Space>Creation<Space>Date:<Space><CR>#<Space>Description:<Space><CR>#<Space>Author:<Space>Mr.<Space>Machine<CR>#<Space>Tags:<Space><CR><CR>#<Space>Library<Space>Imports<CR>
 

@@ -1,3 +1,4 @@
 # IGNORING ARCHIVE FILE
 archive/
 *.swp
+.gitignore
